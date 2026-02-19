@@ -11,6 +11,15 @@
     },
     {
       "path": "./apps/api"
+    },
+    {
+      "path": "./data-access"
+    },
+    {
+      "path": "./data-access"
+    },
+    {
+      "path": "./libs/data-access"
     }
   ]
 }
