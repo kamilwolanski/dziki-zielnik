@@ -9,6 +9,8 @@ import { herbariums } from './herbariums';
 import { entries } from './entries';
 import { entryPhotos } from './entryPhotos';
 import { userPhotos } from './userPhotos';
+import { genera } from './genera';
+import { plantFloweringSeasons } from './plantFloweringSeasons';
 
 export const plantRelations = relations(plants, ({ one, many }) => ({
   family: one(families, {
@@ -24,6 +26,12 @@ export const plantRelations = relations(plants, ({ one, many }) => ({
   }),
 
   plantHabitats: many(plantHabitats),
+  plantFloweringSeasons: many(plantFloweringSeasons),
+
+  genus: one(genera, {
+    fields: [plants.genusId],
+    references: [genera.id],
+  }),
 }));
 
 export const plantPhotosRelations = relations(plantPhotos, ({ one }) => ({
@@ -98,4 +106,19 @@ export const userPhotosRelations = relations(userPhotos, ({ one, many }) => ({
     references: [users.id],
   }),
   entryPhotos: many(entryPhotos),
+}));
+
+export const generaRelations = relations(genera, ({ one, many }) => ({
+  family: one(families, {
+    fields: [genera.familyId],
+    references: [families.id],
+  }),
+  plants: many(plants),
+}));
+
+export const plantFloweringSeasonsRelations = relations(plantFloweringSeasons, ({ one }) => ({
+  plant: one(plants, {
+    fields: [plantFloweringSeasons.plantId],
+    references: [plants.id],
+  }),
 }));

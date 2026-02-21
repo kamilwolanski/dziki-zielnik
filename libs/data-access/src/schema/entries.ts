@@ -1,6 +1,21 @@
-import { pgTable, uuid, timestamp, text, decimal } from 'drizzle-orm/pg-core';
+import {
+  pgTable,
+  uuid,
+  timestamp,
+  text,
+  decimal,
+  pgEnum,
+} from 'drizzle-orm/pg-core';
 import { herbariums } from './herbariums';
 import { plants } from './plants';
+
+export const quantityUnitEnum = pgEnum('quantity_unit', [
+  'g',
+  'kg',
+  'pcs',
+  'handful',
+  'bundle',
+]);
 
 export const entries = pgTable('entries', {
   id: uuid('id').defaultRandom().primaryKey(),
@@ -10,6 +25,9 @@ export const entries = pgTable('entries', {
   plantId: uuid('plant_id')
     .notNull()
     .references(() => plants.id, { onDelete: 'restrict' }),
+
+  quantity: decimal('quantity', { precision: 10, scale: 2 }),
+  quantityUnit: quantityUnitEnum('quantity_unit'),
 
   collectedAt: timestamp('collected_at'),
   notes: text('notes'),
