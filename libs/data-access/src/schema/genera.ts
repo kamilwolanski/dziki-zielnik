@@ -9,6 +9,7 @@ export const generaTable = pgTable('genera', {
     .references(() => familiesTable.id, { onDelete: 'cascade' }),
 
   latinName: text('latin_name').notNull(),
+  commonName: text('common_name'),
   description: text('description'),
 
   createdAt: timestamp('created_at').notNull().defaultNow(),
