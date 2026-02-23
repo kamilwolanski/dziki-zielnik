@@ -1,6 +1,6 @@
 import { pgTable, uuid, text, timestamp } from 'drizzle-orm/pg-core';
 
-export const families = pgTable('families', {
+export const familiesTable = pgTable('families', {
   id: uuid('id').defaultRandom().primaryKey(),
   latinName: text('latin_name').notNull().unique(),
   commonName: text('common_name').notNull(),

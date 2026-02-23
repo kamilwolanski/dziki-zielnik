@@ -8,9 +8,9 @@ import {
   pgEnum,
   integer,
 } from 'drizzle-orm/pg-core';
-import { families } from './families';
-import { plantPhotos } from './plantPhotos';
-import { genera } from './genera';
+import { familiesTable } from './families';
+import { plantPhotosTable } from './plantPhotos';
+import { generaTable } from './genera';
 
 export const protectionEnum = pgEnum('protection_status', [
   'none',
@@ -18,20 +18,20 @@ export const protectionEnum = pgEnum('protection_status', [
   'strict',
 ]);
 
-export const plants = pgTable('plants', {
+export const plantsTable = pgTable('plants', {
   id: uuid('id').defaultRandom().primaryKey(),
   familyId: uuid('family_id')
     .notNull()
-    .references(() => families.id, { onDelete: 'restrict' }),
+    .references(() => familiesTable.id, { onDelete: 'restrict' }),
   genusId: uuid('genus_id')
     .notNull()
-    .references(() => genera.id, { onDelete: 'restrict' }),
+    .references(() => generaTable.id, { onDelete: 'restrict' }),
 
   latinName: text('latin_name').notNull().unique(),
   commonName: text('common_name').notNull(),
   description: text('description'),
   primaryPhotoId: uuid('primary_photo_id').references(
-    (): AnyPgColumn => plantPhotos.id,
+    (): AnyPgColumn => plantPhotosTable.id,
     {
       onDelete: 'set null',
     },

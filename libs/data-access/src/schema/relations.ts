@@ -1,124 +1,136 @@
 import { relations } from 'drizzle-orm';
-import { plants } from './plants';
-import { plantPhotos } from './plantPhotos';
-import { families } from './families';
-import { plantHabitats } from './plantHabitats';
-import { habitats } from './habitats';
-import { users } from './users';
-import { herbariums } from './herbariums';
-import { entries } from './entries';
-import { entryPhotos } from './entryPhotos';
-import { userPhotos } from './userPhotos';
-import { genera } from './genera';
-import { plantFloweringSeasons } from './plantFloweringSeasons';
+import { plantsTable } from './plants';
+import { plantPhotosTable } from './plantPhotos';
+import { familiesTable } from './families';
+import { plantHabitatsTable } from './plantHabitats';
+import { habitatsTable } from './habitats';
+import { usersTable } from './users';
+import { herbariumsTable } from './herbariums';
+import { entriesTable } from './entries';
+import { entryPhotosTable } from './entryPhotos';
+import { userPhotosTable } from './userPhotos';
+import { generaTable } from './genera';
+import { plantFloweringSeasonsTable } from './plantFloweringSeasons';
 
-export const plantRelations = relations(plants, ({ one, many }) => ({
-  family: one(families, {
-    fields: [plants.familyId],
-    references: [families.id],
+export const plantRelations = relations(plantsTable, ({ one, many }) => ({
+  family: one(familiesTable, {
+    fields: [plantsTable.familyId],
+    references: [familiesTable.id],
   }),
 
-  photos: many(plantPhotos),
+  photos: many(plantPhotosTable),
 
-  primaryPhoto: one(plantPhotos, {
-    fields: [plants.primaryPhotoId],
-    references: [plantPhotos.id],
+  primaryPhoto: one(plantPhotosTable, {
+    fields: [plantsTable.primaryPhotoId],
+    references: [plantPhotosTable.id],
   }),
 
-  plantHabitats: many(plantHabitats),
-  plantFloweringSeasons: many(plantFloweringSeasons),
+  plantHabitats: many(plantHabitatsTable),
+  plantFloweringSeasons: many(plantFloweringSeasonsTable),
 
-  genus: one(genera, {
-    fields: [plants.genusId],
-    references: [genera.id],
-  }),
-}));
-
-export const plantPhotosRelations = relations(plantPhotos, ({ one }) => ({
-  plant: one(plants, {
-    fields: [plantPhotos.plantId],
-    references: [plants.id],
+  genus: one(generaTable, {
+    fields: [plantsTable.genusId],
+    references: [generaTable.id],
   }),
 }));
 
-export const plantHabitatRelations = relations(plantHabitats, ({ one }) => ({
-  plant: one(plants, {
-    fields: [plantHabitats.plantId],
-    references: [plants.id],
-  }),
-  habitat: one(habitats, {
-    fields: [plantHabitats.habitatId],
-    references: [habitats.id],
+export const plantPhotosRelations = relations(plantPhotosTable, ({ one }) => ({
+  plant: one(plantsTable, {
+    fields: [plantPhotosTable.plantId],
+    references: [plantsTable.id],
   }),
 }));
 
-export const habitatRelations = relations(habitats, ({ many }) => ({
-  plantHabitats: many(plantHabitats),
+export const plantHabitatRelations = relations(
+  plantHabitatsTable,
+  ({ one }) => ({
+    plant: one(plantsTable, {
+      fields: [plantHabitatsTable.plantId],
+      references: [plantsTable.id],
+    }),
+    habitat: one(habitatsTable, {
+      fields: [plantHabitatsTable.habitatId],
+      references: [habitatsTable.id],
+    }),
+  }),
+);
+
+export const habitatRelations = relations(habitatsTable, ({ many }) => ({
+  plantHabitats: many(plantHabitatsTable),
 }));
 
-export const familyRelations = relations(families, ({ many }) => ({
-  plants: many(plants),
+export const familyRelations = relations(familiesTable, ({ many }) => ({
+  plants: many(plantsTable),
 }));
 
-export const userRelations = relations(users, ({ many }) => ({
-  herbariums: many(herbariums),
-  photos: many(userPhotos),
+export const userRelations = relations(usersTable, ({ many }) => ({
+  herbariums: many(herbariumsTable),
+  photos: many(userPhotosTable),
 }));
 
-export const herbariumRelations = relations(herbariums, ({ one, many }) => ({
-  user: one(users, {
-    fields: [herbariums.userId],
-    references: [users.id],
+export const herbariumRelations = relations(
+  herbariumsTable,
+  ({ one, many }) => ({
+    user: one(usersTable, {
+      fields: [herbariumsTable.userId],
+      references: [usersTable.id],
+    }),
+    entries: many(entriesTable),
+    coverPhoto: one(userPhotosTable, {
+      fields: [herbariumsTable.coverPhotoId],
+      references: [userPhotosTable.id],
+    }),
   }),
-  entries: many(entries),
-  coverPhoto: one(userPhotos, {
-    fields: [herbariums.coverPhotoId],
-    references: [userPhotos.id],
+);
+
+export const entryRelations = relations(entriesTable, ({ one, many }) => ({
+  herbarium: one(herbariumsTable, {
+    fields: [entriesTable.herbariumId],
+    references: [herbariumsTable.id],
+  }),
+  plant: one(plantsTable, {
+    fields: [entriesTable.plantId],
+    references: [plantsTable.id],
+  }),
+  photos: many(entryPhotosTable),
+}));
+
+export const entryPhotosRelations = relations(entryPhotosTable, ({ one }) => ({
+  entry: one(entriesTable, {
+    fields: [entryPhotosTable.entryId],
+    references: [entriesTable.id],
+  }),
+  photo: one(userPhotosTable, {
+    fields: [entryPhotosTable.photoId],
+    references: [userPhotosTable.id],
   }),
 }));
 
-export const entryRelations = relations(entries, ({ one, many }) => ({
-  herbarium: one(herbariums, {
-    fields: [entries.herbariumId],
-    references: [herbariums.id],
+export const userPhotosRelations = relations(
+  userPhotosTable,
+  ({ one, many }) => ({
+    user: one(usersTable, {
+      fields: [userPhotosTable.userId],
+      references: [usersTable.id],
+    }),
+    entryPhotos: many(entryPhotosTable),
   }),
-  plant: one(plants, {
-    fields: [entries.plantId],
-    references: [plants.id],
+);
+
+export const generaRelations = relations(generaTable, ({ one, many }) => ({
+  family: one(familiesTable, {
+    fields: [generaTable.familyId],
+    references: [familiesTable.id],
   }),
-  photos: many(entryPhotos),
+  plants: many(plantsTable),
 }));
 
-export const entryPhotosRelations = relations(entryPhotos, ({ one }) => ({
-  entry: one(entries, {
-    fields: [entryPhotos.entryId],
-    references: [entries.id],
+export const plantFloweringSeasonsRelations = relations(
+  plantFloweringSeasonsTable,
+  ({ one }) => ({
+    plant: one(plantsTable, {
+      fields: [plantFloweringSeasonsTable.plantId],
+      references: [plantsTable.id],
+    }),
   }),
-  photo: one(userPhotos, {
-    fields: [entryPhotos.photoId],
-    references: [userPhotos.id],
-  }),
-}));
-
-export const userPhotosRelations = relations(userPhotos, ({ one, many }) => ({
-  user: one(users, {
-    fields: [userPhotos.userId],
-    references: [users.id],
-  }),
-  entryPhotos: many(entryPhotos),
-}));
-
-export const generaRelations = relations(genera, ({ one, many }) => ({
-  family: one(families, {
-    fields: [genera.familyId],
-    references: [families.id],
-  }),
-  plants: many(plants),
-}));
-
-export const plantFloweringSeasonsRelations = relations(plantFloweringSeasons, ({ one }) => ({
-  plant: one(plants, {
-    fields: [plantFloweringSeasons.plantId],
-    references: [plants.id],
-  }),
-}));
+);

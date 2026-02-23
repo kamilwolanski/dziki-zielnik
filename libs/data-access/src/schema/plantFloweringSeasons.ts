@@ -1,12 +1,12 @@
 import { pgTable, uuid, integer, timestamp } from 'drizzle-orm/pg-core';
-import { plants } from './plants';
+import { plantsTable } from './plants';
 
-export const plantFloweringSeasons = pgTable('plant_flowering_seasons', {
+export const plantFloweringSeasonsTable = pgTable('plant_flowering_seasons', {
   id: uuid('id').defaultRandom().primaryKey(),
 
   plantId: uuid('plant_id')
     .notNull()
-    .references(() => plants.id, { onDelete: 'cascade' }),
+    .references(() => plantsTable.id, { onDelete: 'cascade' }),
 
   startMonth: integer('start_month').notNull(),
   endMonth: integer('end_month').notNull(),

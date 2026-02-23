@@ -1,15 +1,15 @@
 import { pgTable, uuid, timestamp } from 'drizzle-orm/pg-core';
-import { entries } from './entries';
-import { userPhotos } from './userPhotos';
+import { entriesTable } from './entries';
+import { userPhotosTable } from './userPhotos';
 
-export const entryPhotos = pgTable('entry_photos', {
+export const entryPhotosTable = pgTable('entry_photos', {
   id: uuid('id').defaultRandom().primaryKey(),
   entryId: uuid('entry_id')
     .notNull()
-    .references(() => entries.id, { onDelete: 'cascade' }),
+    .references(() => entriesTable.id, { onDelete: 'cascade' }),
   photoId: uuid('photo_id')
     .notNull()
-    .references(() => userPhotos.id, { onDelete: 'cascade' }),
+    .references(() => userPhotosTable.id, { onDelete: 'cascade' }),
   createdAt: timestamp('created_at').notNull().defaultNow(),
   updatedAt: timestamp('updated_at')
     .notNull()

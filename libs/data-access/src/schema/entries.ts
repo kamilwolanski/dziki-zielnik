@@ -6,8 +6,8 @@ import {
   decimal,
   pgEnum,
 } from 'drizzle-orm/pg-core';
-import { herbariums } from './herbariums';
-import { plants } from './plants';
+import { herbariumsTable } from './herbariums';
+import { plantsTable } from './plants';
 
 export const quantityUnitEnum = pgEnum('quantity_unit', [
   'g',
@@ -17,14 +17,14 @@ export const quantityUnitEnum = pgEnum('quantity_unit', [
   'bundle',
 ]);
 
-export const entries = pgTable('entries', {
+export const entriesTable = pgTable('entries', {
   id: uuid('id').defaultRandom().primaryKey(),
   herbariumId: uuid('herbarium_id')
     .notNull()
-    .references(() => herbariums.id, { onDelete: 'cascade' }),
+    .references(() => herbariumsTable.id, { onDelete: 'cascade' }),
   plantId: uuid('plant_id')
     .notNull()
-    .references(() => plants.id, { onDelete: 'restrict' }),
+    .references(() => plantsTable.id, { onDelete: 'restrict' }),
 
   quantity: decimal('quantity', { precision: 10, scale: 2 }),
   quantityUnit: quantityUnitEnum('quantity_unit'),

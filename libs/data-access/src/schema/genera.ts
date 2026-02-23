@@ -1,12 +1,12 @@
 import { pgTable, uuid, text, timestamp } from 'drizzle-orm/pg-core';
-import { families } from './families';
+import { familiesTable } from './families';
 
-export const genera = pgTable('genera', {
+export const generaTable = pgTable('genera', {
   id: uuid('id').defaultRandom().primaryKey(),
 
   familyId: uuid('family_id')
     .notNull()
-    .references(() => families.id, { onDelete: 'cascade' }),
+    .references(() => familiesTable.id, { onDelete: 'cascade' }),
 
   latinName: text('latin_name').notNull(),
   description: text('description'),

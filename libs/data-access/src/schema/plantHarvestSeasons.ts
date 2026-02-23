@@ -1,5 +1,5 @@
 import { pgTable, uuid, pgEnum, integer, timestamp } from 'drizzle-orm/pg-core';
-import { plants } from './plants';
+import { plantsTable } from './plants';
 
 export const plantPartEnum = pgEnum('plant_part', [
   'leaf', // liść
@@ -21,12 +21,12 @@ export const harvestQualityEnum = pgEnum('harvest_quality', [
   'marginal',
 ]);
 
-export const plantHarvestSeasons = pgTable('plant_harvest_seasons', {
+export const plantHarvestSeasonsTable = pgTable('plant_harvest_seasons', {
   id: uuid('id').defaultRandom().primaryKey(),
 
   plantId: uuid('plant_id')
     .notNull()
-    .references(() => plants.id, { onDelete: 'cascade' }),
+    .references(() => plantsTable.id, { onDelete: 'cascade' }),
 
   part: plantPartEnum('part').notNull(),
 
