@@ -15,6 +15,8 @@ export const plantPartEnum = pgEnum('plant_part', [
   'bark', // kora
 ]);
 
+export type PlantPart = typeof plantPartEnum.enumValues[number];
+
 export const harvestQualityEnum = pgEnum('harvest_quality', [
   'optimal',
   'secondary',
