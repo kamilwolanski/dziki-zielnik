@@ -61,6 +61,7 @@ export const habitatRelations = relations(habitatsTable, ({ many }) => ({
 
 export const familyRelations = relations(familiesTable, ({ many }) => ({
   plants: many(plantsTable),
+  genera: many(generaTable),
 }));
 
 export const userRelations = relations(usersTable, ({ many }) => ({
