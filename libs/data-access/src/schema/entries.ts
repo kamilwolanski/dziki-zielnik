@@ -12,6 +12,8 @@ import { plantsTable } from './plants';
 export const quantityUnitEnum = pgEnum('quantity_unit', [
   'g',
   'kg',
+  'ml',
+  'l',
   'pcs',
   'handful',
   'bundle',
