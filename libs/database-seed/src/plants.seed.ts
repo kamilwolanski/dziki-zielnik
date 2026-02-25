@@ -1,13 +1,13 @@
+import { eq } from 'drizzle-orm';
+import { HabitatName } from './habitats.seed.js';
 import {
   plantsTable,
   plantHabitatsTable,
   plantFloweringSeasonsTable,
   plantHarvestSeasonsTable,
-  PlantPart,
-} from '../schema';
-import { eq } from 'drizzle-orm';
-import { HabitatName } from './habitats.seed';
-import { DB } from '../db';
+  PlantPart
+} from '@dziki-zielnik/database';
+import type { DB } from '@dziki-zielnik/data-access';
 
 export async function seedPlants(
   db: DB,

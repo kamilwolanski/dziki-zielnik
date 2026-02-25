@@ -1,6 +1,6 @@
 
-import { familiesTable } from '../schema';
-import type { DB } from '../db';
+import { familiesTable } from '@dziki-zielnik/database';
+import type { DB } from '@dziki-zielnik/data-access';
 
 export const familiesSeed = [
   {

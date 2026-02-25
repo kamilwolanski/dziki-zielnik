@@ -1,5 +1,5 @@
 {
-  "name": "@dziki-zielnik/data-access",
+  "name": "@dziki-zielnik/database",
   "version": "0.0.1",
   "private": true,
   "type": "module",

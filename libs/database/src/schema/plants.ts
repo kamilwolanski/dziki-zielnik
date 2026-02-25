@@ -8,9 +8,9 @@ import {
   pgEnum,
   integer,
 } from 'drizzle-orm/pg-core';
-import { familiesTable } from './families';
-import { plantPhotosTable } from './plantPhotos';
-import { generaTable } from './genera';
+import { familiesTable } from './families.js';
+import { plantPhotosTable } from './plantPhotos.js';
+import { generaTable } from './genera.js';
 
 export const protectionEnum = pgEnum('protection_status', [
   'none',

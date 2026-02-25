@@ -1,5 +1,5 @@
 {
-  "name": "@dziki-zielnik/data-access",
+  "name": "@dziki-zielnik/database-seed",
   "version": "0.0.1",
   "private": true,
   "type": "module",
@@ -13,5 +13,15 @@
     },
     "./package.json": "./package.json"
   },
-  "dependencies": {}
+  "dependencies": {},
+    "nx": {
+    "targets": {
+      "seed": {
+        "executor": "nx:run-commands",
+        "options": {
+          "command": "tsx libs/database-seed/src/seed.ts"
+        }
+      }
+    }
+  }
 }

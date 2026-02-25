@@ -1,5 +1,5 @@
-import { habitatsTable } from '../schema';
-import { DB } from '../db';
+import { habitatsTable } from '@dziki-zielnik/database';
+import type { DB } from '@dziki-zielnik/data-access';
 
 export const habitatsSeed = [
   { name: 'Las liściasty' },

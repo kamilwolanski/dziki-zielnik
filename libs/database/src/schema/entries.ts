@@ -6,8 +6,8 @@ import {
   decimal,
   pgEnum,
 } from 'drizzle-orm/pg-core';
-import { herbariumsTable } from './herbariums';
-import { plantsTable } from './plants';
+import { herbariumsTable } from './herbariums.js';
+import { plantsTable } from './plants.js';
 
 export const quantityUnitEnum = pgEnum('quantity_unit', [
   'g',

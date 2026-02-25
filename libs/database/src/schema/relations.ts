@@ -1,16 +1,16 @@
 import { relations } from 'drizzle-orm';
-import { plantsTable } from './plants';
-import { plantPhotosTable } from './plantPhotos';
-import { familiesTable } from './families';
-import { plantHabitatsTable } from './plantHabitats';
-import { habitatsTable } from './habitats';
-import { usersTable } from './users';
-import { herbariumsTable } from './herbariums';
-import { entriesTable } from './entries';
-import { entryPhotosTable } from './entryPhotos';
-import { userPhotosTable } from './userPhotos';
-import { generaTable } from './genera';
-import { plantFloweringSeasonsTable } from './plantFloweringSeasons';
+import { plantsTable } from './plants.js';
+import { plantPhotosTable } from './plantPhotos.js';
+import { familiesTable } from './families.js';
+import { plantHabitatsTable } from './plantHabitats.js';
+import { habitatsTable } from './habitats.js';
+import { usersTable } from './users.js';
+import { herbariumsTable } from './herbariums.js';
+import { entriesTable } from './entries.js';
+import { entryPhotosTable } from './entryPhotos.js';
+import { userPhotosTable } from './userPhotos.js';
+import { generaTable } from './genera.js';
+import { plantFloweringSeasonsTable } from './plantFloweringSeasons.js';
 
 export const plantRelations = relations(plantsTable, ({ one, many }) => ({
   family: one(familiesTable, {

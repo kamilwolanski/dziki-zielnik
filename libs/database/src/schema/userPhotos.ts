@@ -1,19 +1,14 @@
 import { pgTable, uuid, text, timestamp } from 'drizzle-orm/pg-core';
-import { usersTable } from './users';
-import { userPhotosTable } from './userPhotos';
+import { usersTable } from './users.js';
 
-export const herbariumsTable = pgTable('herbariums', {
+export const userPhotosTable = pgTable('user_photos', {
   id: uuid('id').defaultRandom().primaryKey(),
+
   userId: uuid('user_id')
     .notNull()
     .references(() => usersTable.id, { onDelete: 'cascade' }),
 
-  name: text('name').notNull(),
-  description: text('description'),
-
-  coverPhotoId: uuid('cover_photo_id').references(() => userPhotosTable.id, {
-    onDelete: 'set null',
-  }),
+  url: text('url').notNull(),
 
   createdAt: timestamp('created_at').notNull().defaultNow(),
   updatedAt: timestamp('updated_at')

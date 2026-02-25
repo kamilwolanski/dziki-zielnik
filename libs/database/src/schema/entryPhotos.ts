@@ -1,6 +1,6 @@
 import { pgTable, uuid, timestamp } from 'drizzle-orm/pg-core';
-import { entriesTable } from './entries';
-import { userPhotosTable } from './userPhotos';
+import { entriesTable } from './entries.js';
+import { userPhotosTable } from './userPhotos.js';
 
 export const entryPhotosTable = pgTable('entry_photos', {
   id: uuid('id').defaultRandom().primaryKey(),
