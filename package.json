@@ -7,6 +7,7 @@
   "dependencies": {
     "@neondatabase/serverless": "^1.0.2",
     "@nestjs/common": "^11.0.0",
+    "@nestjs/config": "^4.0.3",
     "@nestjs/core": "^11.0.0",
     "@nestjs/platform-express": "^11.0.0",
     "axios": "^1.6.0",
@@ -19,6 +20,8 @@
     "rxjs": "^7.8.0"
   },
   "devDependencies": {
+    "@angular-devkit/core": "^21.1.5",
+    "@angular-devkit/schematics": "^21.1.5",
     "@eslint/js": "^9.8.0",
     "@nestjs/schematics": "^11.0.0",
     "@nestjs/testing": "^11.0.0",
@@ -61,6 +64,7 @@
   "workspaces": [
     "apps/*",
     "data-access",
-    "libs/*"
+    "libs/*",
+    "database"
   ]
 }
