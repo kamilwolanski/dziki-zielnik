@@ -1,13 +1,11 @@
-import { Controller, Get, Inject } from '@nestjs/common';
-import { DRIZZLE_DB } from '../drizzle/drizzle.module';
-import * as schema from '@dziki-zielnik/database';
-import type { DB } from '@dziki-zielnik/data-access';
+import { Controller, Get } from '@nestjs/common';
+import { PlantsService } from './plants.service';
 
 @Controller('plants')
 export class PlantsController {
-  constructor(@Inject(DRIZZLE_DB) private readonly db: DB) {}
+  constructor(private plantsService: PlantsService) {}
   @Get()
-  findAll() {
-    return this.db.select().from(schema.plantsTable);
+  getAllPlants() {
+    return this.plantsService.getAllPlants();
   }
 }
