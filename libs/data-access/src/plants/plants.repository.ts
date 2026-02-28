@@ -1,6 +1,6 @@
 import { Inject, Injectable } from '@nestjs/common';
-import { DRIZZLE_DB } from '../drizzle.token.js';
-import type { DB } from '../db.js';
+import { DRIZZLE_DB } from '@dziki-zielnik/database'
+import type { DB } from '@dziki-zielnik/database';
 
 @Injectable()
 export class PlantsRepository {

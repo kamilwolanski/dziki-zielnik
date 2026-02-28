@@ -2,6 +2,7 @@
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
     "outDir": "dist",
+    "baseUrl": ".",
     "module": "nodenext",
     "types": ["node"],
     "rootDir": "src",
@@ -16,6 +17,12 @@
   "references": [
     {
       "path": "../../libs/data-access/tsconfig.lib.json"
+    },
+    {
+      "path": "../../libs/contracts/tsconfig.lib.json"
+    },
+    {
+      "path": "../../libs/database/tsconfig.lib.json"
     }
   ]
 }

@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
-import { DRIZZLE_DB, createDb, type DB } from '@dziki-zielnik/data-access';
+import { DRIZZLE_DB, createDb, type DB } from '@dziki-zielnik/database';
 
 @Module({
   providers: [
