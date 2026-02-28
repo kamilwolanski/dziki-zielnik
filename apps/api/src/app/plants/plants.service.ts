@@ -1,4 +1,4 @@
-import { PlantListItemDto } from '@dziki-zielnik/contracts';
+import { PlantListItemDto, plantListItemSchema } from '@dziki-zielnik/contracts';
 import { PlantsRepository } from '@dziki-zielnik/data-access';
 import { Injectable } from '@nestjs/common';
 
@@ -8,7 +8,7 @@ export class PlantsService {
 
   async findAll(): Promise<PlantListItemDto[]> {
     const plants = await this.plantsRepository.findAll();
-    return plants.map((p) => ({
+    const mapped = plants.map((p) => ({
       id: p.id,
       latinName: p.latinName,
       commonName: p.commonName,
@@ -19,5 +19,7 @@ export class PlantsService {
       isPoisonous: p.isPoisonous,
       protectionStatus: p.protectionStatus,
     }));
+
+    return plantListItemSchema.array().parse(mapped);
   }
 }
