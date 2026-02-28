@@ -1,5 +1,5 @@
 import { pgTable, uuid, text, timestamp } from 'drizzle-orm/pg-core';
-import { familiesTable } from './families.js';
+import { familiesTable } from '../families/families.table';
 
 export const generaTable = pgTable('genera', {
   id: uuid('id').defaultRandom().primaryKey(),

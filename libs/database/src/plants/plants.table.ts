@@ -8,9 +8,9 @@ import {
   pgEnum,
   integer,
 } from 'drizzle-orm/pg-core';
-import { familiesTable } from './families.js';
-import { plantPhotosTable } from './plantPhotos.js';
-import { generaTable } from './genera.js';
+import { familiesTable } from '../families/families.table';
+import { plantPhotosTable } from '../plant-photos/plant-photos.table';
+import { generaTable } from '../genera/genera.table';
 
 export const protectionEnum = pgEnum('protection_status', [
   'none',
@@ -53,3 +53,4 @@ export const plantsTable = pgTable('plants', {
     .defaultNow()
     .$onUpdateFn(() => new Date()),
 });
+

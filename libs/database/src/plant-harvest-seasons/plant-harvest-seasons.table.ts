@@ -1,5 +1,5 @@
 import { pgTable, uuid, pgEnum, integer, timestamp } from 'drizzle-orm/pg-core';
-import { plantsTable } from './plants.js';
+import { plantsTable } from '../plants/plants.table';
 
 export const plantPartEnum = pgEnum('plant_part', [
   'leaf', // liść

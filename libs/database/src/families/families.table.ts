@@ -12,3 +12,4 @@ export const familiesTable = pgTable('families', {
     .defaultNow()
     .$onUpdateFn(() => new Date()),
 });
+

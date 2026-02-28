@@ -1,6 +1,6 @@
 import { pgTable, uuid, primaryKey } from 'drizzle-orm/pg-core';
-import { habitatsTable } from './habitats.js';
-import { plantsTable } from './plants.js';
+import { habitatsTable } from '../habitats/habitats.table';
+import { plantsTable } from '../plants/plants.table';
 
 export const plantHabitatsTable = pgTable(
   'plant_habitats',
