@@ -17,8 +17,32 @@ export default [
           allow: ['^.*/eslint(\\.base)?\\.config\\.[cm]?[jt]s$'],
           depConstraints: [
             {
-              sourceTag: '*',
-              onlyDependOnLibsWithTags: ['*'],
+              sourceTag: 'type:database',
+              onlyDependOnLibsWithTags: ['type:database'],
+            },
+            {
+              sourceTag: 'type:contracts',
+              onlyDependOnLibsWithTags: ['type:database', 'type:contracts'],
+            },
+            {
+              sourceTag: 'type:data-access',
+              onlyDependOnLibsWithTags: ['type:database', 'type:data-access'],
+            },
+            {
+              sourceTag: 'type:backend',
+              onlyDependOnLibsWithTags: [
+                'type:database',
+                'type:contracts',
+                'type:data-access'
+              ],
+            },
+            {
+              sourceTag: 'type:database-seed',
+              onlyDependOnLibsWithTags: [
+                'type:database',
+                'type:database-seed',
+                'type:data-access',
+              ],
             },
           ],
         },

@@ -15,6 +15,7 @@
   },
   "dependencies": {},
     "nx": {
+      "tags": ["type:database-seed"],
     "targets": {
       "seed": {
         "executor": "nx:run-commands",
