@@ -1,8 +1,8 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Param } from '@nestjs/common';
 import { PlantsService } from './plants.service';
-import {
-  PlantListItemDto,
-} from '@dziki-zielnik/contracts';
+import { PlantListItemDto } from '@dziki-zielnik/contracts';
+import { ZodValidationPipe } from '../common/zod-validation.pipe';
+import { plantSlugParamSchema, type PlantSlugParam } from '@dziki-zielnik/contracts';
 
 @Controller('plants')
 export class PlantsController {
@@ -10,5 +10,13 @@ export class PlantsController {
   @Get()
   async getAllPlants(): Promise<PlantListItemDto[]> {
     return await this.plantsService.findAll();
+  }
+
+  @Get('/:slug')
+  getPlant(
+    @Param(new ZodValidationPipe(plantSlugParamSchema))
+    params: PlantSlugParam
+) {
+    return this.plantsService.findOne(params.slug);
   }
 }

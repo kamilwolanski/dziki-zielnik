@@ -4,6 +4,7 @@ import { plantsTableSchema } from '@dziki-zielnik/database';
 export const plantListItemSchema = plantsTableSchema
   .pick({
     id: true,
+    slug: true,
     latinName: true,
     commonName: true,
     protectionStatus: true,
