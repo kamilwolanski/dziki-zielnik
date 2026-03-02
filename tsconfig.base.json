@@ -17,5 +17,6 @@
     "strict": true,
     "target": "es2022",
     "customConditions": ["@dziki-zielnik/source"],
+    "strictBindCallApply": true
   }
 }
