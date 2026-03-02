@@ -1,5 +1,5 @@
 import { relations } from 'drizzle-orm';
-import { habitatsTable } from './habitats.table.js';
+import { habitatsTable } from './habitats.table';
 import { plantHabitatsTable } from '../plant-habitats/plant-habitats.table';
 
 export const habitatRelations = relations(habitatsTable, ({ many }) => ({

@@ -20,6 +20,7 @@ export const protectionEnum = pgEnum('protection_status', [
 
 export const plantsTable = pgTable('plants', {
   id: uuid('id').defaultRandom().primaryKey(),
+  slug: text("slug").notNull().unique(),
   familyId: uuid('family_id')
     .notNull()
     .references(() => familiesTable.id, { onDelete: 'restrict' }),
