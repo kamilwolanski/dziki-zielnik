@@ -1,8 +1,7 @@
 import { User } from "@dziki-zielnik/database";
 
 export interface JwtSignPayload {
-  id: string;
-  email: string;
+  sub: string;
   role: User['role'];
 }
 

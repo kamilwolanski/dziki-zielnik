@@ -38,3 +38,5 @@ export * from './user-photos/user-photos.relations';
 export * from './users/users.table';
 export * from './users/users.relations';
 
+export * from './user-oauth-accounts/user-oauth-accounts.table'
+export * from './user-oauth-accounts/user-oauth-accounts.relations';

@@ -10,6 +10,8 @@ import { usersTable } from '../users/users.table';
 
 export const oauthProviderEnum = pgEnum('oauth_provider', ['google', 'apple']);
 
+export type OAuthProvider = typeof oauthProviderEnum.enumValues[number];
+
 export const userOauthAccountsTable = pgTable(
   'user_oauth_accounts',
   {
