@@ -3,6 +3,7 @@ import { userPublicSchema } from '../users/user-public.schema';
 
 export const authResponseSchema = z.object({
   accessToken: z.string(),
+  refreshToken: z.string(),
   user: userPublicSchema,
 });
 

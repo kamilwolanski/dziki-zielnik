@@ -1,4 +1,3 @@
-// export only DB Schema related files
 export * from './entries/entries.table';
 export * from './entries/entries.relations';
 
@@ -40,3 +39,6 @@ export * from './users/users.relations';
 
 export * from './user-oauth-accounts/user-oauth-accounts.table'
 export * from './user-oauth-accounts/user-oauth-accounts.relations';
+
+export * from './refresh-tokens/refresh-tokens.table';
+export * from './refresh-tokens/refresh-tokens.relations';

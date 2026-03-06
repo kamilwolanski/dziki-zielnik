@@ -11,6 +11,10 @@ export class UsersService {
     return (await this.usersRepository.findOne(email)) ?? null;
   }
 
+  async findById(userId: string) {
+    return (await this.usersRepository.findById(userId)) ?? null
+  }
+
   async findByGoogleId(providerUserId: string) {
     return (await this.usersRepository.findByGoogleId(providerUserId)) ?? null;
   }

@@ -13,10 +13,12 @@ import { AuthService } from './auth.service';
 import { JwtAuthGuard } from './guards/jwt-auth.guard';
 import {
   type AuthGoogleLoginBody,
-  authGoogleLoginBodySchema,
-  authLoginBodySchema,
   type UserJwtPayload,
   type AuthLoginBody,
+  type AuthRefreshBody,
+  authGoogleLoginBodySchema,
+  authLoginBodySchema,
+  authRefreshBodySchema,
 } from '@dziki-zielnik/contracts';
 import { ZodValidationPipe } from '../common/zod-validation.pipe';
 
@@ -47,5 +49,22 @@ export class AuthController {
     body: AuthGoogleLoginBody,
   ) {
     return this.authService.googleLogin(body.idToken);
+  }
+
+  @Post('refresh')
+  async refreshToken(
+    @Body(new ZodValidationPipe(authRefreshBodySchema))
+    body: AuthRefreshBody,
+  ) {
+    return this.authService.refresh(body.refreshToken);
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @HttpCode(HttpStatus.NO_CONTENT)
+  @Post('logout')
+  async logout(
+    @Body(new ZodValidationPipe(authRefreshBodySchema)) body: AuthRefreshBody,
+  ) {
+    return this.authService.logout(body.refreshToken);
   }
 }

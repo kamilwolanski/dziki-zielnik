@@ -16,6 +16,12 @@ export class UsersRepository {
     });
   }
 
+  findById(id: string) {
+    return this.db.query.usersTable.findFirst({
+      where: (users, { eq }) => eq(users.id, id)
+    })
+  }
+
   async findByGoogleId(providerUserId: string) {
     const userOauthAccount = await this.db.query.userOauthAccountsTable.findFirst({
       with: {
