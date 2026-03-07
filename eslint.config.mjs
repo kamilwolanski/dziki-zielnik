@@ -33,7 +33,13 @@ export default [
               onlyDependOnLibsWithTags: [
                 'type:database',
                 'type:contracts',
-                'type:data-access'
+                'type:data-access',
+              ],
+            },
+            {
+              sourceTag: 'type:mobile',
+              onlyDependOnLibsWithTags: [
+                'type:contracts',
               ],
             },
             {
