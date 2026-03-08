@@ -25,6 +25,12 @@
     },
     "plugins": [
       [
+        "expo-router",
+        {
+          "root": "./apps/mobile/app"
+        }
+      ],
+      [
         "expo-splash-screen",
         {
           "image": "./assets/images/splash-icon.png",
