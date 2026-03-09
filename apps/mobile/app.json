@@ -1,11 +1,11 @@
 {
   "expo": {
     "name": "Mobile",
-    "slug": "@dziki-zielnik/mobile",
+    "slug": "dziki-zielnik-mobile",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-    "scheme": "@dziki-zielnik/mobile",
+    "scheme": "dziki-zielnik",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
