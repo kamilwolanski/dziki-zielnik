@@ -25,6 +25,7 @@
     "expo-status-bar": "~55.0.4",
     "expo-system-ui": "~55.0.9",
     "google-auth-library": "^10.6.1",
+    "jest-expo": "~55.0.9",
     "next": "~16.0.1",
     "passport": "^0.7.0",
     "passport-jwt": "^4.0.1",
