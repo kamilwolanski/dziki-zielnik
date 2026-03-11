@@ -2,20 +2,41 @@ import { Tabs } from 'expo-router';
 import AntDesign from '@expo/vector-icons/AntDesign';
 import Feather from '@expo/vector-icons/Feather';
 import Ionicons from '@expo/vector-icons/Ionicons';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { useCSSVariable } from 'uniwind';
+import AnimatedTabBar from "../components/AnimatedTabBar";
 
 export default function TabLayout() {
+  const bgTab = useCSSVariable('--color-surface');
+  const bgApp = useCSSVariable('--color-background');
+  const insets = useSafeAreaInsets();
+
   return (
     <Tabs
       screenOptions={{
         tabBarActiveTintColor: '#367d50',
+        tabBarInactiveTintColor: '#777',
+        tabBarStyle: {
+          height: 65 + insets.bottom,
+          paddingBottom: insets.bottom,
+          backgroundColor: String(bgTab),
+        },
+        tabBarIconStyle: {
+          marginTop: 5,
+        },
+        sceneStyle: {
+          backgroundColor: String(bgApp)
+        },
+        headerShown: false
       }}
+      tabBar={(props) => <AnimatedTabBar {...props} />}
     >
       <Tabs.Screen
         name="index"
         options={{
           title: 'Start',
           tabBarIcon: ({ color, size }) => (
-            <AntDesign name="home" size={size} color={color} />
+            <AntDesign name="home" size={22} color={color} />
           ),
         }}
       />
@@ -25,7 +46,7 @@ export default function TabLayout() {
         options={{
           title: 'Encyklopedia',
           tabBarIcon: ({ color, size }) => (
-            <Feather name="book-open" size={size} color={color} />
+            <Feather name="book-open" size={22} color={color} />
           ),
         }}
       />
@@ -35,7 +56,7 @@ export default function TabLayout() {
         options={{
           title: 'Zielnik',
           tabBarIcon: ({ color, size }) => (
-            <Ionicons name="leaf-outline" size={size} color={color} />
+            <Ionicons name="leaf-outline" size={22} color={color} />
           ),
         }}
       />
@@ -45,7 +66,7 @@ export default function TabLayout() {
         options={{
           title: 'Profil',
           tabBarIcon: ({ color, size }) => (
-            <Ionicons name="person-outline" size={size} color={color} />
+            <Ionicons name="person-outline" size={22} color={color} />
           ),
         }}
       />

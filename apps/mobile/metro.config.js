@@ -1,33 +1,14 @@
-const { withNxMetro } = require('@nx/expo');
 const { getDefaultConfig } = require('expo/metro-config');
-const { mergeConfig } = require('metro-config');
-
-const defaultConfig = getDefaultConfig(__dirname);
-const { assetExts, sourceExts } = defaultConfig.resolver;
-
-/**
- * Metro configuration
- * https://reactnative.dev/docs/metro
- *
- * @type {import('metro-config').MetroConfig}
- */
-const customConfig = {
-  cacheVersion: '@dziki-zielnik/mobile',
-  transformer: {
-    babelTransformerPath: require.resolve('react-native-svg-transformer'),
-  },
-  resolver: {
-    assetExts: assetExts.filter((ext) => ext !== 'svg'),
-    sourceExts: [...sourceExts, 'cjs', 'mjs', 'svg'],
-  },
-};
-
-module.exports = withNxMetro(mergeConfig(defaultConfig, customConfig), {
-  // Change this to true to see debugging info.
-  // Useful if you have issues resolving modules
-  debug: false,
-  // all the file extensions used for imports other than 'ts', 'tsx', 'js', 'jsx', 'json'
-  extensions: [],
-  // Specify folders to watch, in addition to Nx defaults (workspace libraries and node_modules)
-  watchFolders: [],
+const { withUniwindConfig } = require('uniwind/metro');
+const config = getDefaultConfig(__dirname); // Twój custom (svg itp.)
+config.resolver.assetExts = config.resolver.assetExts.filter(
+  (ext) => ext !== 'svg',
+);
+config.resolver.sourceExts.push('svg', 'cjs', 'mjs');
+config.transformer.babelTransformerPath = require.resolve(
+  'react-native-svg-transformer',
+);
+module.exports = withUniwindConfig(config, {
+  cssEntryFile: './global.css',
+  dtsFile: './uniwind-types.d.ts',
 });

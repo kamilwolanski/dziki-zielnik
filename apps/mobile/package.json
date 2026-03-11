@@ -7,5 +7,8 @@
     "eas-build-post-install": "cd ../../ && node tools/scripts/eas-build-post-install.mjs . apps/mobile",
     "android": "expo run:android",
     "ios": "expo run:ios"
+  },
+  "nx": {
+    "tags": ["type:mobile"]
   }
 }

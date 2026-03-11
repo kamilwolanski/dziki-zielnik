@@ -6,11 +6,12 @@
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
     "scheme": "dziki-zielnik",
-    "userInterfaceStyle": "automatic",
+    "userInterfaceStyle": "light",
     "newArchEnabled": true,
     "ios": {
       "supportsTablet": true
     },
+    
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
@@ -25,10 +26,7 @@
     },
     "plugins": [
       [
-        "expo-router",
-        {
-          "root": "./apps/mobile/app"
-        }
+        "expo-router"
       ],
       [
         "expo-splash-screen",
