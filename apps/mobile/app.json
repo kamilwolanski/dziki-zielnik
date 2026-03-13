@@ -7,27 +7,25 @@
     "icon": "./assets/images/icon.png",
     "scheme": "dziki-zielnik",
     "userInterfaceStyle": "light",
-    "newArchEnabled": true,
     "ios": {
       "supportsTablet": true
     },
-    
+    "experiments": {
+      "typedRoutes": true
+    },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "edgeToEdgeEnabled": true,
-      "package": "com.anonymous.dzikizielnikmobile"
+      "package": "pl.dzikizielnik.app"
     },
     "web": {
       "bundler": "metro",
       "favicon": "./assets/images/favicon.png"
     },
     "plugins": [
-      [
-        "expo-router"
-      ],
+      ["expo-router"],
       [
         "expo-splash-screen",
         {
@@ -36,7 +34,14 @@
           "resizeMode": "contain",
           "backgroundColor": "#ffffff"
         }
-      ]
-    ]
+      ],
+      "@react-native-google-signin/google-signin/app.plugin.js"
+    ],
+    "extra": {
+      "googleWebClientId": "1003526144649-s3f9f5spihm5acvc55ohukfumks8ofas.apps.googleusercontent.com",
+      "eas": {
+        "projectId": "33baab51-8990-4ec3-82ea-2fdf999f37f7"
+      }
+    }
   }
 }

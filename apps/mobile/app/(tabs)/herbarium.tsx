@@ -1,17 +1,13 @@
-import { View, Text, StyleSheet } from 'react-native';
+import { Text } from 'react-native';
+import { withUniwind } from 'uniwind';
+import { SafeAreaView } from 'react-native-safe-area-context';
+
+const StyledSafeAreaView = withUniwind(SafeAreaView)
 
 export default function Herbarium() {
   return (
-    <View style={styles.container}>
+    <StyledSafeAreaView edges={['bottom', 'top']} className='flex-1'>
       <Text>Herbarium screen</Text>
-    </View>
+    </StyledSafeAreaView>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-});
