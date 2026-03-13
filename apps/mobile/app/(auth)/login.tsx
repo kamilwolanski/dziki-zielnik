@@ -6,12 +6,12 @@ import {
   GoogleSignin,
   isSuccessResponse,
 } from '@react-native-google-signin/google-signin';
-import { useState } from 'react';
+import { useAuthStore } from '../../stores/auth.store';
 
 const StyledSafeAreaView = withUniwind(SafeAreaView);
 
 export default function LoginScreen() {
-  const [user, setUser] = useState();
+  const {user, setAuth} = useAuthStore()
   console.log('hej login screen');
 
   const handleGoogleLogin = async () => {
@@ -31,7 +31,7 @@ export default function LoginScreen() {
         });
   
         const data = await responseBackend.json();
-        setUser(data.user)
+        setAuth(data.user, data.accessToken, data.refreshToken)
         console.log('Auth response:', data);
       }
 
@@ -48,7 +48,7 @@ export default function LoginScreen() {
 
   return (
     <StyledSafeAreaView edges={['bottom', 'top']} className="flex-1">
-      <Text style={{ color: 'red' }}>{user?.displayName}</Text>
+      <Text style={{ color: 'red' }}>who is logged?: {user?.displayName}</Text>
       <GoogleSigninButton
         size={GoogleSigninButton.Size.Wide}
         color={GoogleSigninButton.Color.Dark}

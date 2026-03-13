@@ -8,7 +8,7 @@ export default function Home() {
 
   return (
     <StyledSafeAreaView edges={['bottom', 'top']} className='flex-1'>
-      <Text className="text-red-500">Home screen</Text>
+      <Text className="text-red-500">Home screencccccccccccccccccc</Text>
     </StyledSafeAreaView>
   );
 }
