@@ -15,7 +15,7 @@ import { OAuth2Client } from 'google-auth-library';
 import { UsersService } from '../users/users.service';
 import { userPublicSchema } from '@dziki-zielnik/contracts';
 import { RefreshTokensRepository } from '@dziki-zielnik/data-access';
-import { User } from '@dziki-zielnik/database';
+import { Role } from '@dziki-zielnik/database';
 import { randomBytes } from 'crypto';
 
 @Injectable()
@@ -45,7 +45,7 @@ export class AuthService {
 
   private async createTokens(
     userId: string,
-    role: User['role'],
+    role: Role,
   ): Promise<{ accessToken: string; refreshToken: string }> {
     const payload: JwtSignPayload = {
       sub: userId,
