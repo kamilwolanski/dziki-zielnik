@@ -35,7 +35,13 @@
           "backgroundColor": "#ffffff"
         }
       ],
-      "@react-native-google-signin/google-signin/app.plugin.js"
+      "@react-native-google-signin/google-signin/app.plugin.js",
+      [
+        "expo-secure-store",
+        {
+          "configureAndroidBackup": true
+        }
+      ]
     ],
     "extra": {
       "googleWebClientId": "1003526144649-s3f9f5spihm5acvc55ohukfumks8ofas.apps.googleusercontent.com",

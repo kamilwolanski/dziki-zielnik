@@ -33,5 +33,13 @@
     ".expo/types/**/*.ts",
     "expo-env.d.ts",
     "uniwind-types.d.ts"
+  ],
+  "references": [
+    {
+      "path": "../../libs/contracts/tsconfig.lib.json"
+    },
+    {
+      "path": "../../libs/api-client/tsconfig.lib.json"
+    }
   ]
 }

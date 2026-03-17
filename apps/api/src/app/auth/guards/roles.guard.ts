@@ -16,6 +16,7 @@ export class RolesGuard implements CanActivate {
       ],
     );
 
+    console.log('roles', roles)
     if (!roles || roles.length === 0) {
       return true;
     }

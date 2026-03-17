@@ -1,8 +1,8 @@
-import { User } from "@dziki-zielnik/database";
+import { Role } from "@dziki-zielnik/database";
 
 export interface JwtSignPayload {
   sub: string;
-  role: User['role'];
+  role: Role;
 }
 
 export interface UserJwtPayload extends JwtSignPayload {

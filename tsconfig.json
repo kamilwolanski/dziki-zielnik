@@ -26,6 +26,9 @@
     },
     {
       "path": "./apps/mobile"
+    },
+    {
+      "path": "./libs/api-client"
     }
   ]
 }

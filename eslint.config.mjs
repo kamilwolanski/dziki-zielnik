@@ -38,9 +38,7 @@ export default [
             },
             {
               sourceTag: 'type:mobile',
-              onlyDependOnLibsWithTags: [
-                'type:contracts',
-              ],
+              onlyDependOnLibsWithTags: ['type:contracts', 'type:api-client'],
             },
             {
               sourceTag: 'type:database-seed',
@@ -49,6 +47,10 @@ export default [
                 'type:database-seed',
                 'type:data-access',
               ],
+            },
+            {
+              sourceTag: 'type:api-client',
+              onlyDependOnLibsWithTags: ['type:api-client', 'type:contracts'],
             },
           ],
         },

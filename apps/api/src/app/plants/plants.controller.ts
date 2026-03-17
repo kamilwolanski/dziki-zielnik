@@ -3,10 +3,13 @@ import { PlantsService } from './plants.service';
 import { PlantListItemDto } from '@dziki-zielnik/contracts';
 import { ZodValidationPipe } from '../common/zod-validation.pipe';
 import { plantSlugParamSchema, type PlantSlugParam } from '@dziki-zielnik/contracts';
+import { Auth } from '../auth/decorators/auth.decorator';
 
+@Auth('user')
 @Controller('plants')
 export class PlantsController {
   constructor(private plantsService: PlantsService) {}
+
   @Get()
   async getAllPlants(): Promise<PlantListItemDto[]> {
     return await this.plantsService.findAll();
