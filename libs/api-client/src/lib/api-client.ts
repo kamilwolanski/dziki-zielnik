@@ -10,6 +10,8 @@ export const createApiClient = (
   onUnauthorized?: () => Promise<string | null>,
 ): AxiosInstance => {
   const client = axios.create({ baseURL });
+  
+  let refreshPromise: Promise<string | null> | null = null;
 
   client.interceptors.request.use((config) => {
     const token = getToken?.();
@@ -18,6 +20,7 @@ export const createApiClient = (
     }
     return config;
   });
+
   client.interceptors.response.use(
     (response) => response,
     async (error) => {
@@ -26,7 +29,13 @@ export const createApiClient = (
       if (error.response?.status === 401 && !originalRequest._retry) {
         originalRequest._retry = true;
 
-        const newToken = await onUnauthorized?.();
+        if (!refreshPromise) {
+          refreshPromise = onUnauthorized?.() ?? Promise.resolve(null);
+        }
+
+        const newToken = await refreshPromise;
+
+        refreshPromise = null;
 
         if (newToken) {
           originalRequest.headers = {
