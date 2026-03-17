@@ -1,24 +1,19 @@
 import '../global.css';
-import { Stack, useRouter } from 'expo-router';
-import { useEffect } from 'react';
-import { GoogleSignin } from '@react-native-google-signin/google-signin';
+import { Stack } from 'expo-router';
 import Constants from 'expo-constants';
+import { GoogleSignin } from '@react-native-google-signin/google-signin';
+import { useEffect } from 'react';
+import { useAuthStore } from '../src/stores/auth.store';
 
 export default function RootLayout() {
-  const router = useRouter();
+  const loadFromStorage = useAuthStore((s) => s.loadFromStorage);
 
-  const isAuth = false;
   useEffect(() => {
-    console.log('Constants.expoConfig?.extra?.googleWebClientId', Constants.expoConfig?.extra?.googleWebClientId)
     GoogleSignin.configure({
       webClientId: Constants.expoConfig?.extra?.googleWebClientId,
     });
-    if(!isAuth) {
-      router.replace("/(auth)/login")
-    } else {
-      router.replace("/(tabs)")
-    }
-  }, [isAuth, router])
+    loadFromStorage();
+  }, [loadFromStorage]);
 
   return (
     <Stack>

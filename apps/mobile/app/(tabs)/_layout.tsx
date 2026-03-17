@@ -1,15 +1,24 @@
-import { Tabs } from 'expo-router';
+import { Redirect, Tabs } from 'expo-router';
 import AntDesign from '@expo/vector-icons/AntDesign';
 import Feather from '@expo/vector-icons/Feather';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useCSSVariable } from 'uniwind';
 import AnimatedTabBar from "../components/AnimatedTabBar";
+import { useAuthStore } from '../../src/stores/auth.store';
 
 export default function TabLayout() {
   const bgTab = useCSSVariable('--color-surface');
   const bgApp = useCSSVariable('--color-background');
   const insets = useSafeAreaInsets();
+
+  const { accessToken, isLoading, user } = useAuthStore();
+
+  if(isLoading) return null;
+
+  if(!accessToken || !user) {
+    return <Redirect href={"/(auth)/login"}/>
+  }
 
   return (
     <Tabs
