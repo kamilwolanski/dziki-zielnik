@@ -18,6 +18,7 @@ interface AuthState {
 
   clearAuth: () => Promise<void>;
   loadFromStorage: () => Promise<void>;
+  loadRefreshToken: () => Promise<string | null>;
   setTokens: (accessToken: string, refreshToken: string) => Promise<void>;
 }
 
@@ -47,6 +48,10 @@ export const useAuthStore = create<AuthState>((set, get) => ({
       accessToken,
       isLoading: false,
     });
+  },
+
+  loadRefreshToken: async () => {
+    return await SecureStore.getItemAsync(REFRESH_TOKEN_KEY);
   },
 
   setTokens: async (accessToken: string, refreshToken: string) => {

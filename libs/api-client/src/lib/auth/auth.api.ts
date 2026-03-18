@@ -17,4 +17,8 @@ export const createAuthApi = (api: AxiosInstance) => ({
 
     return data;
   },
+  logout: async (body: AuthRefreshBody) => {
+    const { data } = await api.post<void>('/auth/logout', body);
+    return data;
+  },
 });
