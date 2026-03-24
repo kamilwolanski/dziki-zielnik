@@ -14,11 +14,15 @@
     ]
   },
   "dependencies": {
+    "@expo-google-fonts/arbutus-slab": "^0.4.1",
+    "@expo-google-fonts/source-sans-3": "^0.4.1",
     "@expo/vector-icons": "^15.0.2",
     "@react-native-google-signin/google-signin": "^16.1.2",
     "expo": "~55.0.6",
     "expo-constants": "~55.0.7",
     "expo-dev-client": "~55.0.16",
+    "expo-font": "~55.0.4",
+    "expo-linear-gradient": "~55.0.9",
     "expo-router": "~55.0.5",
     "expo-secure-store": "~55.0.8",
     "expo-splash-screen": "~55.0.10",

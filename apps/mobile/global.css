@@ -1,17 +1,39 @@
 @import 'tailwindcss';
 @import 'uniwind';
 
+@theme {
+  --font-serif: "ArbutusSlab_400Regular";
+  --font-sans: "SourceSans3_400Regular";
+  --font-sans-semibold: "SourceSans3_600SemiBold";
+  --font-sans-bold: "SourceSans3_700Bold";
+}
+
 @layer theme {
   :root {
-
     @variant dark {
-      --color-background: #fcfbf8;
+      --color-primary: #488554;
+      --color-background-main: #f5f0e8;
       --color-surface: #f7f5f0;
+
+            /* TEXT */
+      --color-text-primary: #1c2b1e;
+      --color-text-secondary: #6B7C6B;
+      --color-text-muted: #A0AFA0;
+      --color-text-inverted: #FFFFFF;
+      --color-text-link: #488554;
     }
 
     @variant light {
-      --color-background: '#fcfbf8';
+      --color-primary: #488554;
+      --color-background-main: #f5f0e8;
       --color-surface: #f7f5f0;
+
+            /* TEXT */
+      --color-text-primary: #1c2b1e;
+      --color-text-secondary: #6B7C6B;
+      --color-text-muted: #A0AFA0;
+      --color-text-inverted: #FFFFFF;
+      --color-text-link: #488554;
     }
   }
 }

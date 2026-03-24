@@ -1,13 +1,14 @@
 import { withUniwind } from 'uniwind';
 import { SafeAreaView } from 'react-native-safe-area-context';
-
 import {
-  GoogleSigninButton,
   GoogleSignin,
   isSuccessResponse,
 } from '@react-native-google-signin/google-signin';
 import { useGoogleLogin } from '../../src/features/auth/queries/useLogin';
-import { ActivityIndicator } from 'react-native';
+import { ActivityIndicator, Text, View } from 'react-native';
+import GoogleButton from '../../src/components/googleButton';
+import Curve from '../../assets/images/curve.svg';
+import { ImageBackground } from 'react-native';
 
 const StyledSafeAreaView = withUniwind(SafeAreaView);
 
@@ -28,12 +29,48 @@ export default function LoginScreen() {
   if (isPending) return <ActivityIndicator size={'large'} />;
 
   return (
-    <StyledSafeAreaView edges={['bottom', 'top']} className="flex-1">
-      <GoogleSigninButton
-        size={GoogleSigninButton.Size.Wide}
-        color={GoogleSigninButton.Color.Dark}
-        onPress={handleGoogleLogin}
-      />
+    <StyledSafeAreaView edges={['bottom', 'top']} className="flex-1 ">
+      <View className="flex-1">
+        <ImageBackground
+          source={require('../../assets/images/hero3.png')}
+          resizeMode="cover"
+          className="flex-1 justify-center"
+        >
+          <View className="z-10 text-center mb-20">
+            <Text className="text-text-inverted text-3xl font-serif text-center">
+              DZIKI ZIELNIK
+            </Text>
+            <Text className="text-text-inverted text-base font-serif text-center">
+              Twój osobisty ogród wspomnień
+            </Text>
+          </View>
+          <View className="absolute z-10 w-full -bottom-px">
+            <Curve width={'100%'} />
+          </View>
+        </ImageBackground>
+        <View className="flex-1 bg-background-main px-5">
+          <View className="mt-10 justify-between flex-1">
+            <View>
+              <Text className="text-2xl text-center text-text-primary font-serif">
+                Twój ogród czeka
+              </Text>
+              <Text className="text-center text-text-muted text-base font-sans">
+                zaloguj się by do niego wejść
+              </Text>
+              <View className="mt-5">
+                <GoogleButton handleOnPress={handleGoogleLogin} />
+              </View>
+            </View>
+            <View>
+              <Text className="text-center text-text-muted text-sm font-sans">
+                Rejestrując się, akceptujesz{' '}
+                <Text className="text-text-link underline">Regulamin</Text> oraz{' '}
+                <Text className="text-text-link underline">Politykę prywatności</Text>
+              </Text>
+            </View>
+          </View>
+        </View>
+      </View>
     </StyledSafeAreaView>
   );
 }

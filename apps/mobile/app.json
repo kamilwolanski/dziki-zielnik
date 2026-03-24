@@ -25,7 +25,9 @@
       "favicon": "./assets/images/favicon.png"
     },
     "plugins": [
-      ["expo-router"],
+      [
+        "expo-router"
+      ],
       [
         "expo-splash-screen",
         {
@@ -41,7 +43,8 @@
         {
           "configureAndroidBackup": true
         }
-      ]
+      ],
+      "expo-font"
     ],
     "extra": {
       "googleWebClientId": "1003526144649-s3f9f5spihm5acvc55ohukfumks8ofas.apps.googleusercontent.com",
