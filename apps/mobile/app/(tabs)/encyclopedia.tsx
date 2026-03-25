@@ -1,26 +1,19 @@
-import { View, Text, StyleSheet } from 'react-native';
+import { Text } from 'react-native';
 import { usePlants } from '../../src/features/plants/queries/usePlants';
+import { StyledSafeAreaView } from '../components/ui/StyledSafeAreaView';
+
 
 export default function Encyclopedia() {
   const { data: plants, isPending } = usePlants();
 
-
-  if(isPending) return <Text>Is pending</Text>
+  if (isPending) return <Text>Is pending</Text>;
 
   return (
-    <View style={styles.container}>
-      <Text>Encyclopedia screen</Text>
-      {plants?.map((plant) => (
-        <Text key={plant.id}>{plant.commonName}</Text>
-      ))}
-    </View>
+    <StyledSafeAreaView
+      edges={['bottom', 'top']}
+      className="flex-1 bg-background-main"
+    >
+      <Text>Encyklopedia screen</Text>
+    </StyledSafeAreaView>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-});

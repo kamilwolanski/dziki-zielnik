@@ -12,8 +12,9 @@
   :root {
     @variant dark {
       --color-primary: #488554;
-      --color-background-main: #f5f0e8;
-      --color-surface: #f7f5f0;
+      --color-background-main: #fffdf9;
+      --color-background-login: #f5f0e8;
+      --color-surface: #f5f0e8;
 
             /* TEXT */
       --color-text-primary: #1c2b1e;
@@ -25,8 +26,9 @@
 
     @variant light {
       --color-primary: #488554;
-      --color-background-main: #f5f0e8;
-      --color-surface: #f7f5f0;
+      --color-background-main: #fffdf9;
+      --color-background-login: #f5f0e8;
+      --color-surface: #f5f0e8;
 
             /* TEXT */
       --color-text-primary: #1c2b1e;

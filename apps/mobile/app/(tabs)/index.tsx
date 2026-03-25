@@ -9,7 +9,7 @@ export default function Home() {
     const { user } = useAuthStore();
 
   return (
-    <StyledSafeAreaView edges={['bottom', 'top']} className='flex-1'>
+    <StyledSafeAreaView edges={['bottom', 'top']} className='flex-1 bg-background-main'>
       <Text className="text-red-500">Home screencccccccccccccccccc {user?.email}</Text>
     </StyledSafeAreaView>
   );

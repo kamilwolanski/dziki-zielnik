@@ -19,18 +19,18 @@ export default function AnimatedTabBar({
   const tabBarStyle = options.tabBarStyle || {};
   const activeColor = options.tabBarActiveTintColor;
   const iconStyle = options.tabBarIconStyle || {};
+  const tabBarLabelStyle = options.tabBarLabelStyle || {};
 
   const tabFullWidth = width / state.routes.length;
-  const tabWidth = tabFullWidth / 2;
+  const tabWidth = tabFullWidth / 4;
 
   const animatedStyle = useAnimatedStyle(() => ({
     transform: [
       {
-        translateX: withSpring(state.index * tabFullWidth + tabFullWidth / 4, {
-          stiffness: 220,
-          damping: 22,
-          mass: 0.9,
-        }),
+        translateX: withSpring(
+          state.index * tabFullWidth + (tabFullWidth - tabWidth) / 2,
+          { stiffness: 220, damping: 22, mass: 0.9 },
+        ),
       },
     ],
   }));
@@ -82,7 +82,7 @@ export default function AnimatedTabBar({
               })}
             </View>
 
-            <Text className="text-[10px] mt-0.5" style={{ color }}>
+            <Text className="mt-0.5" style={{ ...tabBarLabelStyle, color }}>
               {label}
             </Text>
           </Pressable>

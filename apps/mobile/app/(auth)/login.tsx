@@ -49,8 +49,8 @@ export default function LoginScreen() {
             <Curve width={'100%'} />
           </View>
         </ImageBackground>
-        <View className="flex-1 bg-background-main px-5 relative">
-          <View className="pt-20 justify-between flex-1 w-full">
+        <View className="flex-1 bg-background-login px-5 relative">
+          <View className="pt-10 justify-between flex-1 w-full">
             <View className="absolute -right-12 top-10">
               <Leaf width={130} height={130} />
             </View>
