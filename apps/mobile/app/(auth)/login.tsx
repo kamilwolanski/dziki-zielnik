@@ -9,6 +9,7 @@ import { ActivityIndicator, Text, View } from 'react-native';
 import GoogleButton from '../../src/components/googleButton';
 import Curve from '../../assets/images/curve.svg';
 import { ImageBackground } from 'react-native';
+import Leaf from '../../assets/images/leaf.svg';
 
 const StyledSafeAreaView = withUniwind(SafeAreaView);
 
@@ -48,8 +49,14 @@ export default function LoginScreen() {
             <Curve width={'100%'} />
           </View>
         </ImageBackground>
-        <View className="flex-1 bg-background-main px-5">
-          <View className="mt-10 justify-between flex-1">
+        <View className="flex-1 bg-background-main px-5 relative">
+          <View className="pt-20 justify-between flex-1 w-full">
+            <View className="absolute -right-12 top-10">
+              <Leaf width={130} height={130} />
+            </View>
+            <View className="absolute -left-14 bottom-10">
+              <Leaf width={100} height={100} />
+            </View>
             <View>
               <Text className="text-2xl text-center text-text-primary font-serif">
                 Twój ogród czeka
@@ -65,7 +72,9 @@ export default function LoginScreen() {
               <Text className="text-center text-text-muted text-sm font-sans">
                 Rejestrując się, akceptujesz{' '}
                 <Text className="text-text-link underline">Regulamin</Text> oraz{' '}
-                <Text className="text-text-link underline">Politykę prywatności</Text>
+                <Text className="text-text-link underline">
+                  Politykę prywatności
+                </Text>
               </Text>
             </View>
           </View>
