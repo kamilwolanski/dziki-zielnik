@@ -4,9 +4,9 @@
     {
       "type": "node",
       "request": "launch",
-      "name": "Debug @dziki-zielnik/api with Nx",
+      "name": "Debug api with Nx",
       "runtimeExecutable": "npx",
-      "runtimeArgs": ["nx", "serve", "@dziki-zielnik/api"],
+      "runtimeArgs": ["nx", "serve", "api"],
       "env": {
         "NODE_OPTIONS": "--inspect=9229"
       },

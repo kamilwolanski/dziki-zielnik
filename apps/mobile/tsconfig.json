@@ -1,16 +1,17 @@
 {
   "extends": "../../tsconfig.base.json",
-  "files": [],
-  "include": [".expo/types/**/*.ts", "expo-env.d.ts"],
-  "references": [
-    {
-      "path": "../../libs/contracts"
-    },
-    {
-      "path": "../../libs/api-client"
-    },
-    {
-      "path": "./tsconfig.app.json"
-    }
+  "compilerOptions": {
+    "moduleResolution": "bundler",
+    "module": "esnext",
+    "target": "esnext",
+    "jsx": "react-jsx",
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true
+  },
+  "include": [
+    "**/*.ts",
+    "**/*.tsx",
+    ".expo/types/**/*.ts",
+    "expo-env.d.ts"
   ]
 }

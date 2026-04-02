@@ -7,7 +7,7 @@ export default function Encyclopedia() {
   const { data: plants, isPending } = usePlants();
 
   if (isPending) return <Text>Is pending</Text>;
-
+  console.log(plants);
   return (
     <StyledSafeAreaView
       edges={['bottom', 'top']}

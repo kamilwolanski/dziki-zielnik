@@ -12,6 +12,7 @@ export class PlantsController {
 
   @Get()
   async getAllPlants(): Promise<PlantListItemDto[]> {
+    console.log('Fetching all plants'); // Debug log to check if the method is being called
     return await this.plantsService.findAll();
   }
 

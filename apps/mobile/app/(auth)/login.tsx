@@ -5,10 +5,9 @@ import {
   isSuccessResponse,
 } from '@react-native-google-signin/google-signin';
 import { useGoogleLogin } from '../../src/features/auth/queries/useLogin';
-import { ActivityIndicator, Text, View } from 'react-native';
+import { ActivityIndicator, Text, View, ImageBackground } from 'react-native';
 import GoogleButton from '../../src/components/googleButton';
 import Curve from '../../assets/images/curve.svg';
-import { ImageBackground } from 'react-native';
 import Leaf from '../../assets/images/leaf.svg';
 
 const StyledSafeAreaView = withUniwind(SafeAreaView);

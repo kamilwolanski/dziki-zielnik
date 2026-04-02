@@ -6,9 +6,10 @@
     "rootDir": "",
     "jsx": "react-jsx",
     "noUnusedLocals": false,
-    "tsBuildInfoFile": "dist/tsconfig.app.tsbuildinfo"
+    "tsBuildInfoFile": "dist/tsconfig.app.tsbuildinfo",
+    "composite": true,
+    "declaration": true,
   },
-  "files": ["../../node_modules/@nx/expo/typings/svg.d.ts"],
   "exclude": [
     "out-tsc",
     "dist",
