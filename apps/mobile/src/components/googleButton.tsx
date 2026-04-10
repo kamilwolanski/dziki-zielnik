@@ -98,7 +98,7 @@ export default function ShimmerButton({
 
           <GoogleIcon />
 
-          <Text className="text-white text-lg tracking-wide font-sans-semibold">
+          <Text className="text-white text-lg tracking-wide font-sans-se">
             Wejdź do ogrodu z Google
           </Text>
         </LinearGradient>

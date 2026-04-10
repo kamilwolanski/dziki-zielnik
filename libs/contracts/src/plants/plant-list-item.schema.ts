@@ -1,7 +1,7 @@
 import { z } from 'zod';
-import { plantsTableSchema } from '@dziki-zielnik/database';
+import { plantBaseSchema } from './plant-base.schema';
 
-export const plantListItemSchema = plantsTableSchema
+export const plantListItemSchema = plantBaseSchema
   .pick({
     id: true,
     slug: true,

@@ -2,9 +2,11 @@
 @import 'uniwind';
 
 @theme {
-  --font-serif: "ArbutusSlab_400Regular";
+  --font-serif: "PlayfairDisplay_400Regular";
+  --font-serif-md: "PlayfairDisplay_500Medium";
+  --font-serif-se: "PlayfairDisplay_600SemiBold";
   --font-sans: "SourceSans3_400Regular";
-  --font-sans-semibold: "SourceSans3_600SemiBold";
+  --font-sans-se: "SourceSans3_600SemiBold";
   --font-sans-bold: "SourceSans3_700Bold";
 }
 

@@ -1,12 +1,12 @@
 import { z } from 'zod';
-import { usersTableSchema } from '@dziki-zielnik/database';
+import { roleEnum } from '../auth/user-role.enum'; 
 
-export const userPublicSchema = usersTableSchema.pick({
-    id: true,
-    email: true,
-    displayName: true,
-    avatarUrl: true,
-    role: true
-})
+export const userPublicSchema = z.object({
+  id: z.uuid(),
+  email: z.email(),
+  displayName: z.string().nullable(),
+  avatarUrl: z.string().nullable(),
+  role: roleEnum,
+});
 
 export type UserDto = z.infer<typeof userPublicSchema>;

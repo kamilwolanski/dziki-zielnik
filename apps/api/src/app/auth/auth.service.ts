@@ -15,7 +15,7 @@ import { OAuth2Client } from 'google-auth-library';
 import { UsersService } from '../users/users.service';
 import { userPublicSchema } from '@dziki-zielnik/contracts';
 import { RefreshTokensRepository } from '@dziki-zielnik/data-access';
-import { Role } from '@dziki-zielnik/database';
+import { Role } from '@dziki-zielnik/contracts';
 import { randomBytes } from 'crypto';
 
 @Injectable()

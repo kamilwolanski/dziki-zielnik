@@ -1,10 +1,20 @@
 import { z } from 'zod';
-import { plantsTableSchema, plantPartEnum, harvestQualityEnum } from '@dziki-zielnik/database';
+import { plantBaseSchema } from './plant-base.schema';
+import { plantPartEnum, harvestQualityEnum } from './plant-enums';
 
-export const plantPartZodEnum = z.enum(plantPartEnum.enumValues);
-export const harvestQualityZodEnum = z.enum(harvestQualityEnum.enumValues);
+export const floweringSeasonSchema = z.object({
+  startMonth: z.number().min(1).max(12),
+  endMonth: z.number().min(1).max(12),
+});
 
-export const plantDetailsSchema = plantsTableSchema
+export const harvestSeasonSchema = z.object({
+  part: plantPartEnum,
+  startMonth: z.number().min(1).max(12),
+  endMonth: z.number().min(1).max(12),
+  quality: harvestQualityEnum,
+});
+
+export const plantDetailsSchema = plantBaseSchema
   .pick({
     id: true,
     slug: true,
@@ -22,16 +32,8 @@ export const plantDetailsSchema = plantsTableSchema
     plantHabitats: z.string().array(),
     photosUrls: z.string().array(),
     primaryPhotoUrl: z.string().nullable(),
-    floweringSeasons: z.object({
-      startMonth: z.number().min(1).max(12),
-      endMonth: z.number().min(1).max(12),
-    }).array(),
-    harvestSeasons: z.object({
-      part: plantPartZodEnum,
-      startMonth: z.number().min(1).max(12),
-      endMonth: z.number().min(1).max(12),
-      quality: harvestQualityZodEnum,
-    }).array(),
+    floweringSeasons: floweringSeasonSchema.array(),
+    harvestSeasons: harvestSeasonSchema.array(),
   });
 
 export type PlantDetailsDto = z.infer<typeof plantDetailsSchema>;

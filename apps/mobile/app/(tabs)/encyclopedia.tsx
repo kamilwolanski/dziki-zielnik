@@ -11,9 +11,9 @@ export default function Encyclopedia() {
   return (
     <StyledSafeAreaView
       edges={['bottom', 'top']}
-      className="flex-1 bg-background-main"
+      className="flex-1 bg-background-main px-4"
     >
-      <Text>Encyklopedia screen</Text>
+      <Text className='text-2xl font-serif-md'>Encyklopedia</Text>
     </StyledSafeAreaView>
   );
 }

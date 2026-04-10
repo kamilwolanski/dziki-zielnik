@@ -1,4 +1,4 @@
-import { Role } from "@dziki-zielnik/database";
+import { Role } from './user-role.enum';
 
 export interface JwtSignPayload {
   sub: string;

@@ -8,7 +8,9 @@ import { QueryClientProvider } from '@tanstack/react-query';
 import { useEffect } from 'react';
 import { useAuthStore } from '../src/stores/auth.store';
 import queryClient from '../src/utils/queryClient';
-import { ArbutusSlab_400Regular } from '@expo-google-fonts/arbutus-slab';
+import { PlayfairDisplay_400Regular } from '@expo-google-fonts/playfair-display/400Regular';
+import { PlayfairDisplay_500Medium } from '@expo-google-fonts/playfair-display/500Medium';
+import { PlayfairDisplay_600SemiBold } from '@expo-google-fonts/playfair-display/600SemiBold';
 import {
   SourceSans3_400Regular,
   SourceSans3_600SemiBold,
@@ -17,7 +19,9 @@ import {
 
 export default function RootLayout() {
   const [loaded, error] = useFonts({
-    ArbutusSlab_400Regular,
+    PlayfairDisplay_400Regular,
+    PlayfairDisplay_500Medium,
+    PlayfairDisplay_600SemiBold,
     SourceSans3_400Regular,
     SourceSans3_600SemiBold,
     SourceSans3_700Bold,
