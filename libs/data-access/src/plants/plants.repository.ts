@@ -1,12 +1,22 @@
 import { Inject, Injectable } from '@nestjs/common';
-import { DRIZZLE_DB } from '@dziki-zielnik/database';
+import { DRIZZLE_DB, plantsTable } from '@dziki-zielnik/database';
 import type { DB } from '@dziki-zielnik/database';
+import { count } from "drizzle-orm";
 
 @Injectable()
 export class PlantsRepository {
   constructor(@Inject(DRIZZLE_DB) private readonly db: DB) {}
 
-  findAll() {
+  async countAll() {
+    const [result] = await this.db.select({
+      total: count()
+    })
+    .from(plantsTable);
+    
+    return result.total;
+  }
+
+  async findAll() {
     return this.db.query.plantsTable.findMany({
       columns: {
         id: true,
@@ -34,7 +44,7 @@ export class PlantsRepository {
     });
   }
 
-  findOne(slug: string) {
+  async findOne(slug: string) {
     return this.db.query.plantsTable.findFirst({
       columns: {
         familyId: false,

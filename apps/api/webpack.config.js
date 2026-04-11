@@ -9,6 +9,15 @@ module.exports = {
       devtoolModuleFilenameTemplate: '[absolute-resource-path]',
     }),
   },
+  resolve: {
+    alias: {
+      '@dziki-zielnik/database': join(__dirname, '../../libs/database/src/index.ts'),
+      '@dziki-zielnik/data-access': join(__dirname, '../../libs/data-access/src/index.ts'),
+      '@dziki-zielnik/contracts': join(__dirname, '../../libs/contracts/src/index.ts'),
+      '@dziki-zielnik/api-client': join(__dirname, '../../libs/api-client/src/index.ts'),
+      '@dziki-zielnik/database-seed': join(__dirname, '../../libs/database-seed/src/index.ts'),
+    },
+  },
   plugins: [
     new NxAppWebpackPlugin({
       target: 'node',

@@ -3,7 +3,7 @@ import * as SecureStore from 'expo-secure-store';
 import { UserDto } from '@dziki-zielnik/contracts';
 
 const ACCESS_TOKEN_KEY = 'access_token';
-const REFRESH_TOKEN_KEY = 'refresh_token';
+export const REFRESH_TOKEN_KEY = 'refresh_token';
 
 interface AuthState {
   user: UserDto | null;

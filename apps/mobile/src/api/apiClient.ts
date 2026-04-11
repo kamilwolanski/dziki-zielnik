@@ -1,5 +1,5 @@
 import { createApiClient } from '@dziki-zielnik/api-client';
-import { useAuthStore } from '../stores/auth.store';
+import { REFRESH_TOKEN_KEY, useAuthStore } from '../stores/auth.store';
 import * as SecureStore from 'expo-secure-store';
 import axios from 'axios';
 import { AuthRefreshResponse } from '@dziki-zielnik/contracts';
@@ -11,7 +11,7 @@ const refreshClient = axios.create({
 });
 
 const refreshAccessToken = async (): Promise<string | null> => {
-  const refreshToken = await SecureStore.getItemAsync('refresh_token');
+  const refreshToken = await SecureStore.getItemAsync(REFRESH_TOKEN_KEY);
 
   if (!refreshToken) return null;
 

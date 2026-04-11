@@ -1,6 +1,6 @@
 import { Controller, Get, Param } from '@nestjs/common';
 import { PlantsService } from './plants.service';
-import { PlantListItemDto } from '@dziki-zielnik/contracts';
+import { PaginatedPlantsResponse } from '@dziki-zielnik/contracts';
 import { ZodValidationPipe } from '../common/zod-validation.pipe';
 import { plantSlugParamSchema, type PlantSlugParam } from '@dziki-zielnik/contracts';
 import { Auth } from '../auth/decorators/auth.decorator';
@@ -11,7 +11,7 @@ export class PlantsController {
   constructor(private plantsService: PlantsService) {}
 
   @Get()
-  async getAllPlants(): Promise<PlantListItemDto[]> {
+  async getAllPlants(): Promise<PaginatedPlantsResponse> {
     console.log('Fetching all plants'); // Debug log to check if the method is being called
     return await this.plantsService.findAll();
   }

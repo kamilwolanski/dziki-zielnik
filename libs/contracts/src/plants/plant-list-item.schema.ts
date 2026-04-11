@@ -1,5 +1,6 @@
 import { z } from 'zod';
 import { plantBaseSchema } from './plant-base.schema';
+import { createPaginationResponseSchema } from '../common/pagination.schema';
 
 export const plantListItemSchema = plantBaseSchema
   .pick({
@@ -17,4 +18,7 @@ export const plantListItemSchema = plantBaseSchema
     primaryPhotoUrl: z.string().nullable(),
   });
 
+export const paginatedPlantListItemSchema = createPaginationResponseSchema(plantListItemSchema);
+
 export type PlantListItemDto = z.infer<typeof plantListItemSchema>;
+export type PaginatedPlantsResponse = z.infer<typeof paginatedPlantListItemSchema>;

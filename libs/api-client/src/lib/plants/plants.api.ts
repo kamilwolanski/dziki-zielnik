@@ -1,9 +1,9 @@
 import { AxiosInstance } from 'axios';
-import { PlantDetailsDto, PlantListItemDto, PlantSlugParam } from '@dziki-zielnik/contracts';
+import { type PaginatedPlantsResponse, PlantDetailsDto, PlantSlugParam } from '@dziki-zielnik/contracts';
 
 export const createPlantsApi = (api: AxiosInstance) => ({
   getAllPlants: async () => {
-    const { data } = await api.get<PlantListItemDto[]>('/plants');
+    const { data } = await api.get<PaginatedPlantsResponse>('/plants');
 
     return data;
   },
