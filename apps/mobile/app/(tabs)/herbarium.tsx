@@ -1,5 +1,5 @@
 import { Text } from 'react-native';
-import { StyledSafeAreaView } from '../components/ui/StyledSafeAreaView';
+import { StyledSafeAreaView } from '../../src/components/ui/StyledSafeAreaView';
 
 
 

@@ -1,6 +1,5 @@
-import { View, Pressable, Dimensions, Text } from 'react-native';
+import { View, Pressable, Dimensions, Text, StyleProp, ViewStyle } from 'react-native';
 import type { BottomTabBarProps } from '@react-navigation/bottom-tabs';
-import { StyleProp, ViewStyle } from 'react-native';
 
 import Animated, {
   useAnimatedStyle,

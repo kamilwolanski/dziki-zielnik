@@ -1,10 +1,7 @@
 import { Redirect, Tabs } from 'expo-router';
-import AntDesign from '@expo/vector-icons/AntDesign';
-import Feather from '@expo/vector-icons/Feather';
-import Ionicons from '@expo/vector-icons/Ionicons';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useCSSVariable } from 'uniwind';
-import AnimatedTabBar from '../components/ui/AnimatedTabBar';
+import AnimatedTabBar from '../../src/components/ui/AnimatedTabBar';
 import { useAuthStore } from '../../src/stores/auth.store';
 import { Image } from 'react-native';
 

@@ -1,6 +1,6 @@
 import { Text, Button } from 'react-native';
 import { useLogout } from '../../src/features/auth/queries/uselogout';
-import { StyledSafeAreaView } from '../components/ui/StyledSafeAreaView';
+import { StyledSafeAreaView } from '../../src/components/ui/StyledSafeAreaView';
 
 export default function Profile() {
   const { mutateAsync, isPending } = useLogout();
