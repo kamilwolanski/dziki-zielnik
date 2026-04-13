@@ -1,5 +1,4 @@
-import { habitatsTable } from '@dziki-zielnik/database';
-import type { DB } from '@dziki-zielnik/data-access';
+import { DB, habitatsTable } from '@dziki-zielnik/database';
 
 export const habitatsSeed = [
   { name: 'Las liściasty' },
@@ -13,7 +12,7 @@ export const habitatsSeed = [
   { name: 'Polana' },
   { name: 'Murawa' },
   { name: 'Sucha murawa / step' },
-  { name: 'Nieurożytki' },
+  { name: 'Nieużytek' },
 
   { name: 'Brzeg rzeki' },
   { name: 'Brzeg jeziora' },

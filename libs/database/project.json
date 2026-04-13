@@ -4,6 +4,12 @@
   "sourceRoot": "libs/database/src",
   "projectType": "library",
   "tags": [],
-  "// targets": "to see all targets run: nx show project database --web",
-  "targets": {}
+  "targets": {
+    "db-studio": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "set TS_NODE_PROJECT=tsconfig.base.json&& node -r tsconfig-paths/register node_modules/drizzle-kit/bin.cjs studio"
+      }
+    }
+  }
 }

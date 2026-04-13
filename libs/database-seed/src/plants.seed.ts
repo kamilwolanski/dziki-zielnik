@@ -5,9 +5,9 @@ import {
   plantHabitatsTable,
   plantFloweringSeasonsTable,
   plantHarvestSeasonsTable,
-  PlantPart
+  PlantPart,
+  DB,
 } from '@dziki-zielnik/database';
-import type { DB } from '@dziki-zielnik/data-access';
 
 export async function seedPlants(
   db: DB,
@@ -24,6 +24,7 @@ export async function seedPlants(
     {
       latinName: 'Betula pendula',
       commonName: 'Brzoza brodawkowata',
+      slug: 'brzoza-brodawkowata',
       genus: 'Betula',
       description: 'Drzewo liściaste o białej korze.',
       heightMinCm: 1000,
@@ -46,6 +47,53 @@ export async function seedPlants(
           start: 4,
           end: 4,
           quality: 'secondary' as const,
+        },
+      ],
+    },
+    {
+      latinName: 'Urtica dioica',
+      commonName: 'Pokrzywa zwyczajna',
+      slug: 'pokrzywa-zwyczajna',
+      genus: 'Urtica',
+      description:
+        'Bylina parząca, szeroko rozpowszechniona, o wszechstronnym zastosowaniu leczniczym i kulinarnym.',
+      heightMinCm: 30,
+      heightMaxCm: 150,
+      isMedicinal: true,
+      isEdible: true,
+      isPoisonous: false,
+      protectionStatus: 'none' as const,
+      habitats: [
+        'Las mieszany',
+        'Skraj lasu',
+        'Nieużytek',
+        'Ogród',
+      ] as const satisfies HabitatName[],
+      flowering: { start: 6, end: 9 },
+      harvest: [
+        {
+          part: 'leaf' as const satisfies PlantPart,
+          start: 4,
+          end: 5,
+          quality: 'optimal' as const,
+        },
+        {
+          part: 'herb' as const satisfies PlantPart,
+          start: 6,
+          end: 8,
+          quality: 'secondary' as const,
+        },
+        {
+          part: 'root' as const satisfies PlantPart,
+          start: 10,
+          end: 11,
+          quality: 'optimal' as const,
+        },
+        {
+          part: 'seed' as const satisfies PlantPart,
+          start: 8,
+          end: 10,
+          quality: 'optimal' as const,
         },
       ],
     },
@@ -74,6 +122,7 @@ export async function seedPlants(
         isEdible: plant.isEdible,
         isPoisonous: plant.isPoisonous,
         protectionStatus: plant.protectionStatus,
+        slug: plant.slug,
       })
       .onConflictDoNothing()
       .returning({ id: plantsTable.id });

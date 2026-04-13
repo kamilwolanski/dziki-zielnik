@@ -1,5 +1,4 @@
-import { generaTable } from '@dziki-zielnik/database';
-import type { DB } from '@dziki-zielnik/data-access';
+import { DB, generaTable } from '@dziki-zielnik/database';
 
 
 export const generaSeed = [
@@ -59,6 +58,11 @@ export const generaSeed = [
     latinName: 'Stachys',
     commonName: 'Czyściec',
     family: 'Lamiaceae',
+  },
+  {
+    latinName: 'Urtica',
+    commonName: 'Pokrzywa',
+    family: 'Urticaceae',
   },
 ] as const;
 

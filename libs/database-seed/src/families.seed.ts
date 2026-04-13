@@ -1,6 +1,5 @@
 
-import { familiesTable } from '@dziki-zielnik/database';
-import type { DB } from '@dziki-zielnik/data-access';
+import { DB, familiesTable } from '@dziki-zielnik/database';
 
 export const familiesSeed = [
   {

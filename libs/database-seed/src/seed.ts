@@ -1,14 +1,14 @@
-import { createDb } from '@dziki-zielnik/data-access';
-import { seedFamilies } from './families.seed.js';
-import { seedPlants } from './plants.seed.js';
-import { seedGenera } from './genera.seed.js';
-import { seedHabitats } from './habitats.seed.js';
+import { seedFamilies } from './families.seed';
+import { seedPlants } from './plants.seed';
+import { seedGenera } from './genera.seed';
+import { seedHabitats } from './habitats.seed';
+import { createDb } from '@dziki-zielnik/database';
 
 async function main() {
-  if (!process.env.DATABASE_URL) {
+  if (!process.env['DATABASE_URL']) {
     throw new Error('DATABASE_URL is not defined');
   }
-  const db = createDb(process.env.DATABASE_URL);
+  const db = createDb(process.env['DATABASE_URL']);
   console.log('🌱 Starting database seed...');
 
   const familyMap = await seedFamilies(db);
