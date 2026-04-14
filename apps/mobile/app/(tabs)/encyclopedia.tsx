@@ -2,24 +2,15 @@ import { Text } from 'react-native';
 import { usePlants } from '../../src/features/plants/queries/usePlants';
 import { StyledSafeAreaView } from '../../src/components/ui/StyledSafeAreaView';
 import SearchInput from '../../src/components/ui/SearchInput';
-import { useEffect, useRef, useState } from 'react';
+import { useState } from 'react';
+import useDebounce from '../../src/utils/useDebounce';
+
 
 
 export default function Encyclopedia() {
-  const { data: plants, isPending } = usePlants();
   const [searchValue, setSearchValue] = useState('');
-
-  const timerRef = useRef<ReturnType<typeof setTimeout>>(undefined);
-
-  useEffect(() => {
-    if (timerRef.current) clearTimeout(timerRef.current);
-
-    timerRef.current = setTimeout(() => {
-      console.log('fetch', searchValue);
-    }, 500);
-    
-    return () =>  clearTimeout(timerRef.current);
-  }, [searchValue]);
+  const debouncedSearch = useDebounce(searchValue, 500);
+  const { data: plants, isPending } = usePlants(debouncedSearch);
 
   if (isPending || !plants) return <Text>Is pending</Text>;
 
@@ -33,6 +24,9 @@ export default function Encyclopedia() {
         {plants.meta.totalItems} roślin w bazie
       </Text>
       <SearchInput value={searchValue} onChange={setSearchValue} />
+      {plants.data.map((plant) => (
+        <Text key={plant.id}>{plant.commonName} ({plant.latinName})</Text>
+      ))}
     </StyledSafeAreaView>
   );
 }

@@ -16,7 +16,7 @@ export class PlantsRepository {
     return result.total;
   }
 
-  async findAll() {
+  async findAll(search?: string) {
     return this.db.query.plantsTable.findMany({
       columns: {
         id: true,
@@ -41,6 +41,13 @@ export class PlantsRepository {
           },
         },
       },
+      where: search
+        ? (plants, { or, ilike }) =>
+            or(
+              ilike(plants.latinName, `%${search}%`),
+              ilike(plants.commonName, `%${search}%`),
+            )
+        : undefined,
     });
   }
 

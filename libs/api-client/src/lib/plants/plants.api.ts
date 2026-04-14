@@ -1,9 +1,15 @@
 import { AxiosInstance } from 'axios';
-import { type PaginatedPlantsResponse, PlantDetailsDto, PlantSlugParam } from '@dziki-zielnik/contracts';
+import {
+  type PaginatedPlantsResponse,
+  PlantDetailsDto,
+  PlantSlugParam,
+} from '@dziki-zielnik/contracts';
 
 export const createPlantsApi = (api: AxiosInstance) => ({
-  getAllPlants: async () => {
-    const { data } = await api.get<PaginatedPlantsResponse>('/plants');
+  getAllPlants: async (search: string) => {
+    const { data } = await api.get<PaginatedPlantsResponse>('/plants', {
+      params: search ? { search } : {},
+    });
 
     return data;
   },

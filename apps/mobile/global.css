@@ -25,16 +25,11 @@
       --color-text-inverted: #FFFFFF;
       --color-text-link: #488554;
 
-      --color-input-bg: var(--color-surface);
-      --color-input-bg-focus: var(--color-background-main);
-      --color-input-bg-disabled: #e5e5e5;
+      /* INPUT */
+      --color-input-bg: #fff;
 
-      /* INPUT - BORDER */
       --color-input-border: #d1d5db;
-      --color-input-border-focus: var(--color-primary);
-      --color-input-border-error: #dc2626;
 
-      /* INPUT - TEXT */
       --color-input-text: var(--color-text-primary);
       --color-input-placeholder: var(--color-text-muted);
     }

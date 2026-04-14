@@ -11,9 +11,9 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 export class PlantsService {
   constructor(private plantsRepository: PlantsRepository) {}
 
-  async findAll(): Promise<PaginatedPlantsResponse> {
+  async findAll(search?: string): Promise<PaginatedPlantsResponse> {
     const [plants, total] = await Promise.all([
-      this.plantsRepository.findAll(),
+      this.plantsRepository.findAll(search),
       this.plantsRepository.countAll(),
     ]);
 
