@@ -32,6 +32,30 @@
 
       --color-input-text: var(--color-text-primary);
       --color-input-placeholder: var(--color-text-muted);
+
+      /* CARD / CONTAINER */
+      --color-card-bg: #FFFFFF;
+      --color-card-border: #58815717; /* Bardzo delikatny zielonkawy szary dla definicji */
+
+    /* BADGE - NEUTRAL (Beżowy/Szary) */
+      --color-badge-neutral-bg: #F5F0E8; /* Twój --color-surface */
+      --color-badge-neutral-text: #6B7C6B;
+
+      /* BADGE - SUCCESS (Zielony - dawne 'edible') */
+      --color-badge-success-bg: #EDF2ED;
+      --color-badge-success-text: #488554;
+
+      /* BADGE - PRIMARY / ACCENT (Morski/Teal - dawne 'healing') */
+      --color-badge-primary-bg: #E6F4F1;
+      --color-badge-primary-text: #2D6A6A;
+
+      /* BADGE - INFO (Niebieski - dawne 'protected') */
+      --color-badge-info-bg: #EBF2FA;
+      --color-badge-info-text: #3E6496;
+
+      /* BADGE - DANGER (Czerwony - dawne 'warning') */
+      --color-badge-danger-bg: #FFEBEB;
+      --color-badge-danger-text: #AF2929;
     }
 
     @variant light {
@@ -54,6 +78,30 @@
       
       --color-input-text: var(--color-text-primary);
       --color-input-placeholder: var(--color-text-muted);
+
+      /* CARD / CONTAINER */
+      --color-card-bg: #FFFFFF;
+      --color-card-border: #58815717; /* Bardzo delikatny zielonkawy szary dla definicji */
+
+    /* BADGE - NEUTRAL (Beżowy/Szary) */
+      --color-badge-neutral-bg: #F5F0E8; /* Twój --color-surface */
+      --color-badge-neutral-text: #6B7C6B;
+
+      /* BADGE - SUCCESS (Zielony - dawne 'edible') */
+      --color-badge-success-bg: #EDF2ED;
+      --color-badge-success-text: #488554;
+
+      /* BADGE - PRIMARY / ACCENT (Morski/Teal - dawne 'healing') */
+      --color-badge-primary-bg: #E6F4F1;
+      --color-badge-primary-text: #2D6A6A;
+
+      /* BADGE - INFO (Niebieski - dawne 'protected') */
+      --color-badge-info-bg: #EBF2FA;
+      --color-badge-info-text: #3E6496;
+
+      /* BADGE - DANGER (Czerwony - dawne 'warning') */
+      --color-badge-danger-bg: #FFEBEB;
+      --color-badge-danger-text: #AF2929;
     }
   }
 }

@@ -1,11 +1,10 @@
-import { Text } from 'react-native';
+import { View, Text } from 'react-native';
 import { usePlants } from '../../src/features/plants/queries/usePlants';
 import { StyledSafeAreaView } from '../../src/components/ui/StyledSafeAreaView';
 import SearchInput from '../../src/components/ui/SearchInput';
 import { useState } from 'react';
 import useDebounce from '../../src/utils/useDebounce';
-
-
+import PlantCard from '../../src/components/ui/plantCard/PlantCard';
 
 export default function Encyclopedia() {
   const [searchValue, setSearchValue] = useState('');
@@ -24,9 +23,11 @@ export default function Encyclopedia() {
         {plants.meta.totalItems} roślin w bazie
       </Text>
       <SearchInput value={searchValue} onChange={setSearchValue} />
-      {plants.data.map((plant) => (
-        <Text key={plant.id}>{plant.commonName} ({plant.latinName})</Text>
-      ))}
+      <View className='mt-5'>
+        {plants.data.map((plant) => (
+          <PlantCard key={plant.id} {...plant} />
+        ))}
+      </View>
     </StyledSafeAreaView>
   );
 }
