@@ -3,17 +3,26 @@ import {
   type PlantDetailsDto,
   type PaginatedPlantsResponse,
   paginatedPlantListItemSchema,
+  type PlantCategory,
+  type PlantsQuery,
 } from '@dziki-zielnik/contracts';
 import { PlantsRepository } from '@dziki-zielnik/data-access';
 import { Injectable, NotFoundException } from '@nestjs/common';
+
 
 @Injectable()
 export class PlantsService {
   constructor(private plantsRepository: PlantsRepository) {}
 
-  async findAll(search?: string): Promise<PaginatedPlantsResponse> {
+  private readonly categories: PlantCategory[] = [
+    { slug: 'medicinal', label: 'Lecznicze' },
+    { slug: 'edible', label: 'Jadalne' },
+    { slug: 'poisonous', label: 'Trujące' },
+  ];
+
+  async findAll(query: PlantsQuery): Promise<PaginatedPlantsResponse> {
     const [plants, total] = await Promise.all([
-      this.plantsRepository.findAll(search),
+      this.plantsRepository.findAll(query),
       this.plantsRepository.countAll(),
     ]);
 
@@ -37,7 +46,6 @@ export class PlantsService {
       data: mapped,
       meta: meta,
     });
-
   }
 
   async findOne(slug: string): Promise<PlantDetailsDto> {
@@ -69,5 +77,9 @@ export class PlantsService {
     };
 
     return plantDetailsSchema.parse(mapped);
+  }
+
+  findCategories() {
+    return this.categories;
   }
 }

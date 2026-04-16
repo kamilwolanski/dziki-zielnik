@@ -1,6 +1,6 @@
 import { z } from 'zod';
 import { plantBaseSchema } from './plant-base.schema';
-import { plantPartEnum, harvestQualityEnum } from './plant-enums';
+import { plantPartEnum, harvestQualityEnum } from '../enums/plant-part.enum';
 
 export const floweringSeasonSchema = z.object({
   startMonth: z.number().min(1).max(12),

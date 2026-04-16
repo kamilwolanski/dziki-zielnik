@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { protectionStatusEnum } from './plant-enums';
+import { protectionStatusEnum } from '../enums/protection.enum';
 
 export const plantBaseSchema = z.object({
   id: z.uuid(),
@@ -16,3 +16,5 @@ export const plantBaseSchema = z.object({
   createdAt: z.date().or(z.string()),
   updatedAt: z.date().or(z.string()),
 });
+
+export type PlantBase = z.infer<typeof plantBaseSchema>;

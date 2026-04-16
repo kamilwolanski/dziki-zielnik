@@ -1,22 +1,24 @@
 import { Inject, Injectable } from '@nestjs/common';
 import { DRIZZLE_DB, plantsTable } from '@dziki-zielnik/database';
 import type { DB } from '@dziki-zielnik/database';
-import { count } from "drizzle-orm";
+import { count } from 'drizzle-orm';
+import { type PlantsQuery } from '@dziki-zielnik/contracts';
 
 @Injectable()
 export class PlantsRepository {
   constructor(@Inject(DRIZZLE_DB) private readonly db: DB) {}
 
   async countAll() {
-    const [result] = await this.db.select({
-      total: count()
-    })
-    .from(plantsTable);
-    
+    const [result] = await this.db
+      .select({
+        total: count(),
+      })
+      .from(plantsTable);
+
     return result.total;
   }
 
-  async findAll(search?: string) {
+  async findAll(query: PlantsQuery) {
     return this.db.query.plantsTable.findMany({
       columns: {
         id: true,
@@ -41,13 +43,32 @@ export class PlantsRepository {
           },
         },
       },
-      where: search
-        ? (plants, { or, ilike }) =>
+      where: (plants, { eq, and, ilike, or }) => {
+        const conditions = [];
+
+        if (query.search) {
+          conditions.push(
             or(
-              ilike(plants.latinName, `%${search}%`),
-              ilike(plants.commonName, `%${search}%`),
-            )
-        : undefined,
+              ilike(plants.latinName, `%${query.search}%`),
+              ilike(plants.commonName, `%${query.search}%`),
+            ),
+          );
+        }
+
+        if (query.category === 'medicinal') {
+          conditions.push(eq(plants.isMedicinal, true));
+        }
+
+        if (query.category === 'edible') {
+          conditions.push(eq(plants.isEdible, true));
+        }
+
+        if (query.category === 'poisonous') {
+          conditions.push(eq(plants.isPoisonous, true));
+        }
+
+        return conditions.length ? and(...conditions) : undefined;
+      },
     });
   }
 
@@ -71,22 +92,22 @@ export class PlantsRepository {
           columns: {
             id: true,
             commonName: true,
-          }
+          },
         },
         plantHabitats: {
           with: {
             habitat: {
               columns: {
-                name: true
-              }
-            }
-          }
+                name: true,
+              },
+            },
+          },
         },
         plantFloweringSeasons: {
           columns: {
             startMonth: true,
-            endMonth: true
-          }
+            endMonth: true,
+          },
         },
         plantHarvestSeasons: {
           columns: {
@@ -94,7 +115,7 @@ export class PlantsRepository {
             startMonth: true,
             endMonth: true,
             quality: true,
-          }
+          },
         },
         primaryPhoto: {
           columns: {
@@ -103,9 +124,9 @@ export class PlantsRepository {
         },
         photos: {
           columns: {
-            url: true
-          }
-        }
+            url: true,
+          },
+        },
       },
       where: (plants, { eq }) => eq(plants.slug, slug),
     });
