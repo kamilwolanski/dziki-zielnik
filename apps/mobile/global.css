@@ -14,9 +14,9 @@
   :root {
     @variant dark {
       --color-primary: #488554;
-      --color-background-main: #fffdf9;
+      --color-background-main: #f7faf4;
       --color-background-login: #f5f0e8;
-      --color-surface: #f5f0e8;
+      --color-surface: #ffffff;
 
             /* TEXT */
       --color-text-primary: #1c2b1e;
@@ -38,7 +38,7 @@
       --color-card-border: #58815717; /* Bardzo delikatny zielonkawy szary dla definicji */
 
     /* BADGE - NEUTRAL (Beżowy/Szary) */
-      --color-badge-neutral-bg: #F5F0E8; /* Twój --color-surface */
+      --color-badge-neutral-bg: #FFF; /* Twój --color-surface */
       --color-badge-neutral-text: #6B7C6B;
 
       /* BADGE - SUCCESS (Zielony - dawne 'edible') */
@@ -56,13 +56,16 @@
       /* BADGE - DANGER (Czerwony - dawne 'warning') */
       --color-badge-danger-bg: #FFEBEB;
       --color-badge-danger-text: #AF2929;
+
+      --color-badge-active-bg: #3a5a40;
+      --color-badge-active-text: #FFFFFF;
     }
 
     @variant light {
       --color-primary: #488554;
-      --color-background-main: #fffdf9;
+      --color-background-main: #f7faf4;
       --color-background-login: #f5f0e8;
-      --color-surface: #f5f0e8;
+      --color-surface: #ffffff;
 
             /* TEXT */
       --color-text-primary: #1c2b1e;
@@ -84,7 +87,7 @@
       --color-card-border: #58815717; /* Bardzo delikatny zielonkawy szary dla definicji */
 
     /* BADGE - NEUTRAL (Beżowy/Szary) */
-      --color-badge-neutral-bg: #F5F0E8; /* Twój --color-surface */
+      --color-badge-neutral-bg: #FFF; /* Twój --color-surface */
       --color-badge-neutral-text: #6B7C6B;
 
       /* BADGE - SUCCESS (Zielony - dawne 'edible') */
@@ -102,6 +105,9 @@
       /* BADGE - DANGER (Czerwony - dawne 'warning') */
       --color-badge-danger-bg: #FFEBEB;
       --color-badge-danger-text: #AF2929;
+
+      --color-badge-active-bg: #3a5a40;
+      --color-badge-active-text: #FFFFFF;
     }
   }
 }

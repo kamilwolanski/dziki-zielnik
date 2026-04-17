@@ -7,7 +7,7 @@ import { Image } from 'react-native';
 
 export default function TabLayout() {
   const bgTab = useCSSVariable('--color-surface');
-  const bgApp = useCSSVariable('--color-background');
+  const bgApp = useCSSVariable('--color-background-main');
   const insets = useSafeAreaInsets();
 
   const { accessToken, isLoading, user } = useAuthStore();
