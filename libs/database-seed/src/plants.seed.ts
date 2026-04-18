@@ -1,4 +1,4 @@
-import { eq } from 'drizzle-orm';
+import { and, eq } from 'drizzle-orm';
 import { HabitatName } from './habitats.seed.js';
 import {
   plantsTable,
@@ -7,6 +7,7 @@ import {
   plantHarvestSeasonsTable,
   PlantPart,
   DB,
+  plantPhotosTable,
 } from '@dziki-zielnik/database';
 
 export async function seedPlants(
@@ -49,6 +50,8 @@ export async function seedPlants(
           quality: 'secondary' as const,
         },
       ],
+      thumbnailUrl:
+        'https://dzikizielnikapp.s3.eu-north-1.amazonaws.com/plants/brzoza-brodawkowata/birch_thumb_2x.png',
     },
     {
       latinName: 'Urtica dioica',
@@ -96,6 +99,8 @@ export async function seedPlants(
           quality: 'optimal' as const,
         },
       ],
+      thumbnailUrl:
+        'https://dzikizielnikapp.s3.eu-north-1.amazonaws.com/plants/pokrzywa/nettle_thumb_2x.png',
     },
   ] as const;
 
@@ -174,5 +179,32 @@ export async function seedPlants(
         })),
       )
       .onConflictDoNothing();
+
+    const existingPhoto = (
+      await db
+        .select({ id: plantPhotosTable.id })
+        .from(plantPhotosTable)
+        .where(
+          and(
+            eq(plantPhotosTable.plantId, plantId),
+            eq(plantPhotosTable.url, plant.thumbnailUrl),
+          ),
+        )
+    )[0];
+
+    const [insertedPhoto] = existingPhoto
+      ? [existingPhoto]
+      : await db
+          .insert(plantPhotosTable)
+          .values({
+            url: plant.thumbnailUrl,
+            plantId: plantId,
+          })
+          .returning({ id: plantPhotosTable.id });
+
+    await db
+      .update(plantsTable)
+      .set({ primaryPhotoId: insertedPhoto.id })
+      .where(eq(plantsTable.id, plantId));
   }
 }

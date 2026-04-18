@@ -1,7 +1,7 @@
 import { PlantListItemDto } from '@dziki-zielnik/contracts';
 import Badge from './Badge';
-import { View, Text } from 'react-native';
-// import zx from '../../../../assets/badge/icons/parsley.png';
+import { View, Text, Image } from 'react-native';
+
 const PlantCard = ({
   commonName,
   latinName,
@@ -9,10 +9,18 @@ const PlantCard = ({
   isMedicinal,
   isPoisonous,
   protectionStatus,
+  primaryPhotoUrl,
 }: PlantListItemDto) => {
   return (
     <View className="w-full flex-row bg-card-bg rounded-xl p-2 mb-2 shadow-xs border border-card-border">
-      <View className="w-20 h-20 bg-green-200 rounded-xl mr-4" />
+      {primaryPhotoUrl ? (
+        <Image
+          source={{ uri: primaryPhotoUrl }}
+          className="w-20 h-20 rounded-xl mr-4"
+        />
+      ) : (
+        <View className="w-20 h-20 bg-green-200 rounded-xl mr-4" />
+      )}
       <View className="flex-1 justify-between">
         <View>
           <Text className="font-serif-se text-base">{commonName}</Text>
