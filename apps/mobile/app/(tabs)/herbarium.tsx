@@ -1,8 +1,6 @@
 import { Text } from 'react-native';
 import { StyledSafeAreaView } from '../../src/components/ui/StyledSafeAreaView';
 
-
-
 export default function Herbarium() {
   return (
     <StyledSafeAreaView
