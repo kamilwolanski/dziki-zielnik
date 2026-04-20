@@ -20,7 +20,7 @@ export const protectionEnum = pgEnum('protection_status', [
 
 export const plantsTable = pgTable('plants', {
   id: uuid('id').defaultRandom().primaryKey(),
-  slug: text("slug").notNull().unique(),
+  slug: text('slug').notNull().unique(),
   familyId: uuid('family_id')
     .notNull()
     .references(() => familiesTable.id, { onDelete: 'restrict' }),
@@ -31,6 +31,10 @@ export const plantsTable = pgTable('plants', {
   latinName: text('latin_name').notNull().unique(),
   commonName: text('common_name').notNull(),
   description: text('description'),
+  heroPhotoId: uuid('hero_photo_id').references(
+    (): AnyPgColumn => plantPhotosTable.id,
+    { onDelete: 'set null' },
+  ),
   primaryPhotoId: uuid('primary_photo_id').references(
     (): AnyPgColumn => plantPhotosTable.id,
     {
@@ -54,4 +58,3 @@ export const plantsTable = pgTable('plants', {
     .defaultNow()
     .$onUpdateFn(() => new Date()),
 });
-
