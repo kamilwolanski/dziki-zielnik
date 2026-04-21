@@ -20,6 +20,11 @@ export const plantRelations = relations(plantsTable, ({ one, many }) => ({
     references: [plantPhotosTable.id],
   }),
 
+  heroPhoto: one(plantPhotosTable, {
+    fields: [plantsTable.heroPhotoId],
+    references: [plantPhotosTable.id],
+  }),
+
   plantHabitats: many(plantHabitatsTable),
   plantFloweringSeasons: many(plantFloweringSeasonsTable),
 

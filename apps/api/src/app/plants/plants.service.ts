@@ -69,6 +69,7 @@ export class PlantsService {
       floweringSeasons: plant.plantFloweringSeasons,
       harvestSeasons: plant.plantHarvestSeasons,
       primaryPhotoUrl: plant.primaryPhoto?.url ?? null,
+      heroPhotoUrl: plant.heroPhoto?.url ?? null,
       photosUrls: plant.photos.map((photo) => photo.url),
       isMedicinal: plant.isMedicinal,
       isEdible: plant.isEdible,

@@ -32,6 +32,7 @@ export const plantDetailsSchema = plantBaseSchema
     plantHabitats: z.string().array(),
     photosUrls: z.string().array(),
     primaryPhotoUrl: z.string().nullable(),
+    heroPhotoUrl: z.string().nullable(),
     floweringSeasons: floweringSeasonSchema.array(),
     harvestSeasons: harvestSeasonSchema.array(),
   });

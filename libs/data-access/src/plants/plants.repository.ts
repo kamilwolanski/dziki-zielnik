@@ -122,6 +122,11 @@ export class PlantsRepository {
             url: true,
           },
         },
+        heroPhoto: {
+          columns: {
+            url: true,
+          },
+        },
         photos: {
           columns: {
             url: true,
