@@ -50,7 +50,7 @@ export class PlantsService {
 
   async findOne(slug: string): Promise<PlantDetailsDto> {
     const plant = await this.plantsRepository.findOne(slug);
-
+    console.log('found plant', plant);
     if (!plant) {
       throw new NotFoundException('Plant not found');
     }
@@ -62,6 +62,7 @@ export class PlantsService {
       commonName: plant.commonName,
       description: plant.description,
       familyCommonName: plant.family.commonName,
+      familyLatinName: plant.family.latinName,
       genusCommonName: plant.genus.commonName,
       plantHabitats: plant.plantHabitats.map(
         (plantHabitat) => plantHabitat.habitat.name,
@@ -75,6 +76,8 @@ export class PlantsService {
       isEdible: plant.isEdible,
       isPoisonous: plant.isPoisonous,
       protectionStatus: plant.protectionStatus,
+      heightMinCm: plant.heightMinCm,
+      heightMaxCm: plant.heightMaxCm,
     };
 
     return plantDetailsSchema.parse(mapped);

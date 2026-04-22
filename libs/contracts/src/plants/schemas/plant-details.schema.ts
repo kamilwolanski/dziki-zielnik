@@ -25,9 +25,12 @@ export const plantDetailsSchema = plantBaseSchema
     isEdible: true,
     isMedicinal: true,
     isPoisonous: true,
+    heightMinCm: true,
+    heightMaxCm: true,
   })
   .extend({
     familyCommonName: z.string(),
+    familyLatinName: z.string(),
     genusCommonName: z.string(),
     plantHabitats: z.string().array(),
     photosUrls: z.string().array(),

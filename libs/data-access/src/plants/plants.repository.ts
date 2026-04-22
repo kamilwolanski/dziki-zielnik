@@ -86,6 +86,7 @@ export class PlantsRepository {
           columns: {
             id: true,
             commonName: true,
+            latinName: true,
           },
         },
         genus: {
